@@ -1,0 +1,44 @@
+{
+	"name": "khan.project-v2",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"lint:css": "stylelint **/*.{scss,css}",
+		"lint:css:fix": "stylelint --fix **/*.{scss,css}"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"clsx": "^1.2.1",
+		"gsap": "^3.11.3",
+		"next": "^13.0.4",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-particles": "^2.5.3",
+		"tsparticles": "^2.5.3"
+	},
+	"devDependencies": {
+		"eslint": "8.28.0",
+		"eslint-config-next": "^13.0.4",
+		"eslint-config-prettier": "^8.5.0",
+		"lint-staged": "^13.0.3",
+		"postcss": "^8.4.19",
+		"postcss-custom-media": "^9.0.1",
+		"postcss-flexbugs-fixes": "^5.0.2",
+		"postcss-import": "^15.0.0",
+		"postcss-nested": "^6.0.0",
+		"postcss-normalize": "^10.0.1",
+		"postcss-preset-env": "^7.8.3",
+		"prettier": "^2.7.1",
+		"stylelint": "^14.15.0",
+		"stylelint-checkstyle-formatter": "^0.1.2",
+		"stylelint-config-standard": "^29.0.0",
+		"stylelint-scss": "^4.3.0"
+	}
+}

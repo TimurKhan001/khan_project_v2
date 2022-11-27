@@ -1,0 +1,11 @@
+{
+	"extends": "stylelint-config-standard",
+	"formatter": "stylelint-checkstyle-formatter",
+	"plugins": ["stylelint-scss"],
+	"rules": {
+		"indentation": null,
+		"declaration-colon-newline-after": null,
+		"string-quotes": null,
+		"selector-class-pattern": null
+	}
+}

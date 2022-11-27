@@ -1,0 +1,82 @@
+.wrapper {
+	height: min(10vh, 10rem);
+	padding: 0 10vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.logo {
+		font-family: FoundersGrotesk, serif;
+		color: var(--color-white);
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 600;
+
+		&::selection {
+			color: #494947;
+			background: transparent;
+		}
+	}
+}
+
+.menuSection {
+	width: 50vw;
+	height: 100vh;
+	height: 100dvh;
+	padding: 10vw 10vw 15vw;
+	background-color: var(--color-black);
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 3;
+	display: none;
+	opacity: 0;
+
+	.cursor {
+		pointer-events: none;
+		position: fixed;
+		padding: 0.3rem;
+		background-color: var(--color-white);
+		border-radius: 50%;
+		mix-blend-mode: difference;
+		transition: transform 0.3s ease;
+	}
+
+	.mainNav {
+		height: 100%;
+		display: flex;
+		flex-flow: column nowrap;
+		gap: 3rem;
+		justify-content: center;
+		align-items: flex-end;
+	}
+
+	.mainMenuLinks {
+		font-size: min(10vw, 5rem);
+		cursor: none;
+		transition: all 0.3s ease;
+
+		&:hover ~ .cursor {
+			transform: translate(-50%, -50%) scale(8);
+		}
+	}
+
+	.menuSpan {
+		display: inline-block;
+		color: var(--color-white);
+		font-size: 3.6rem;
+		font-weight: 400;
+		text-transform: uppercase;
+		pointer-events: none;
+		transition: transform 0.1s linear;
+	}
+}
+
+@media (max-width: 900px) {
+	.menuSection {
+		width: 100vw;
+	}
+
+	.cursor {
+		opacity: 0;
+	}
+}

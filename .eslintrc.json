@@ -1,0 +1,7 @@
+{
+	"extends": ["eslint-config-next", "prettier"],
+	"rules": {
+		"prefer-const": "error",
+		"indent": "off"
+	}
+}
