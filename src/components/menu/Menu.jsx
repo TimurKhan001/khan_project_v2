@@ -51,6 +51,8 @@ const Menu = () => {
 					}));
 				},
 			});
+			// document.body.style.height = '100%';
+			// document.body.style.overflow = 'hidden';
 		}
 
 		if (menuState.isOpened) {
@@ -83,6 +85,9 @@ const Menu = () => {
 					}));
 				},
 			});
+
+			// document.body.style.height = 'initial';
+			// document.body.style.overflow = 'initial';
 		}
 
 		burger.classList.toggle('is-active');
@@ -131,7 +136,9 @@ const Menu = () => {
 	return (
 		<>
 			<div className={styles.wrapper}>
-				<span className={styles.logo}>khan.project</span>
+				<Link href="/" className={styles.logo}>
+					khan.project
+				</Link>
 				<button
 					ref={burgerRef}
 					className="hamburger hamburger--spin"

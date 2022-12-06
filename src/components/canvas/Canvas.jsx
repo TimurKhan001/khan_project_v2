@@ -115,6 +115,12 @@ const Canvas = () => {
 		window.addEventListener('resize', resizeReset);
 		window.addEventListener('mousemove', mousemove);
 		window.addEventListener('mouseout', mouseout);
+
+		return () => {
+			window.removeEventListener('resize', resizeReset);
+			window.removeEventListener('mousemove', mousemove);
+			window.removeEventListener('mouseout', mouseout);
+		};
 	}, []);
 
 	return <canvas id="canvas"></canvas>;

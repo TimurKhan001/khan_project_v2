@@ -1,0 +1,21 @@
+.wrapper {
+	--gap: clamp(5rem, 6vw, 8rem);
+	--full: minmax(var(--gap), 1fr);
+	--content: min(130rem, 100% - var(--gap) * 2);
+	--popout: minmax(0, 4rem);
+	--feature: minmax(0, 8rem);
+
+	width: 100%;
+	display: grid;
+	grid-template-columns:
+		[full-start] var(--full)
+		[feature-start] var(--feature)
+		[popout-start] var(--popout)
+		[content-start] var(--content) [content-end]
+		var(--popout) [popout-end] var(--feature) [popout-end] var(--full) [full-end];
+	overflow: hidden;
+
+	& > * {
+		grid-column: content;
+	}
+}

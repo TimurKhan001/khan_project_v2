@@ -1,6 +1,9 @@
 .wrapper {
+	width: min(80vw, 130rem);
+	margin: 0 auto;
+
+	/* padding: 0 min(10vw, 18rem); */
 	height: min(10vh, 10rem);
-	padding: 0 10vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -10,6 +13,7 @@
 		color: var(--color-white);
 		font-size: clamp(2.5rem, 5vw, 4rem);
 		font-weight: 600;
+		text-decoration: none;
 
 		&::selection {
 			color: #494947;
