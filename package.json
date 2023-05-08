@@ -15,12 +15,13 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@svgr/webpack": "^6.5.1",
 		"clsx": "^1.2.1",
-		"framer-motion": "^7.6.12",
-		"gsap": "^3.11.3",
+		"framer-motion": "^10.12.8",
 		"next": "^13.0.4",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"sharp": "^0.31.3"
 	},
 	"devDependencies": {
 		"eslint": "8.28.0",
@@ -35,6 +36,7 @@
 		"postcss-normalize": "^10.0.1",
 		"postcss-preset-env": "^7.8.3",
 		"prettier": "^2.7.1",
+		"sass": "^1.62.1",
 		"stylelint": "^14.15.0",
 		"stylelint-checkstyle-formatter": "^0.1.2",
 		"stylelint-config-standard": "^29.0.0",

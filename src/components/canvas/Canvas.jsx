@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 
 const Canvas = () => {
-	useEffect(() => {
-		const canvas = document.querySelector('#canvas');
-		const ctx = canvas.getContext('2d');
+	const canvasRef = useRef(null);
 
+	useLayoutEffect(() => {
+		const canvas = canvasRef.current;
+		const ctx = canvas.getContext('2d');
 		let w, h, particles;
 		const particleDistance = 10;
 		const mouse = {
@@ -123,7 +124,7 @@ const Canvas = () => {
 		};
 	}, []);
 
-	return <canvas id="canvas"></canvas>;
+	return <canvas ref={canvasRef}></canvas>;
 };
 
 export default Canvas;

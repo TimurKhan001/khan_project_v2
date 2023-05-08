@@ -7,7 +7,7 @@
 	header {
 		margin: var(--standart-sections-margin);
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: flex-start;
 		gap: 3rem;
 
@@ -18,8 +18,9 @@
 		}
 
 		p {
-			width: 32ch;
-			color: var(--color-white);
+			margin: 0;
+			max-width: 32ch;
+			color: var(--color-black);
 			align-self: end;
 
 			@media (max-width: 600px) {
@@ -49,9 +50,16 @@
 		}
 
 		.project {
-			width: calc(33.33% - var(--gap));
-			aspect-ratio: 1 / 1;
+			width: calc(66.6% - var(--gap));
+			aspect-ratio: 2000 / 1250;
 			position: relative;
+
+			/* max-height: 40rem; */
+		}
+
+		.verticalProject {
+			width: calc(33.3% - var(--gap));
+			aspect-ratio: 1600 / 2000;
 		}
 
 		.projectImage {
@@ -63,6 +71,7 @@
 			overflow: hidden;
 
 			img {
+				object-fit: cover;
 				transform: scale3d(1, 1, 1);
 				transform-style: preserve-3d;
 				will-change: transform;
@@ -79,7 +88,7 @@
 		.projectCategory {
 			position: absolute;
 			top: 0;
-			right: -3.5rem;
+			right: -2.5rem;
 			writing-mode: vertical-rl;
 			text-orientation: upright;
 		}

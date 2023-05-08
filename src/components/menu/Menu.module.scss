@@ -1,39 +1,57 @@
 .wrapper {
-	width: min(80vw, 130rem);
+	--button-color: var(--color-main-dark);
+	width: 100%;
 	margin: 0 auto;
-
-	/* padding: 0 min(10vw, 18rem); */
-	height: min(10vh, 10rem);
+	height: 15rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	grid-column: full;
 
 	.logo {
-		font-family: FoundersGrotesk, serif;
-		color: var(--color-white);
+		position: absolute;
+		left: 50px;
+		color: var(--color-main-dark);
 		font-size: clamp(2.5rem, 5vw, 4rem);
 		font-weight: 600;
 		text-decoration: none;
+		z-index: 1;
 
 		&::selection {
-			color: #494947;
+			color: var(--color-main-red);
 			background: transparent;
 		}
+	}
+
+	button {
+		position: fixed;
+		right: 50px;
+		z-index: 100;
+	}
+
+	button::before {
+		content: '';
+		position: absolute;
+		width: 70px;
+		height: 70px;
+		background-color: var(--color-main-dark);
+		border-radius: 50%;
+		top: -22px;
+		left: -9px;
 	}
 }
 
 .menuSection {
-	width: 50vw;
+	width: 100vw;
 	height: 100vh;
 	height: 100dvh;
 	padding: 10vw 10vw 15vw;
-	background-color: var(--color-black);
+	background-color: var(--color-main-dark);
 	position: fixed;
 	right: 0;
 	top: 0;
 	z-index: 3;
-	display: none;
-	opacity: 0;
+	
 
 	.cursor {
 		pointer-events: none;
@@ -41,7 +59,7 @@
 		padding: 0.3rem;
 		background-color: var(--color-white);
 		border-radius: 50%;
-		mix-blend-mode: difference;
+		mix-blend-mode: overlay;
 		transition: transform 0.3s ease;
 	}
 
@@ -49,7 +67,7 @@
 		height: 100%;
 		display: flex;
 		flex-flow: column nowrap;
-		gap: 3rem;
+		gap: 5rem;
 		justify-content: center;
 		align-items: flex-end;
 	}
@@ -58,18 +76,25 @@
 		font-size: min(10vw, 5rem);
 		cursor: none;
 		transition: all 0.3s ease;
+		position: relative;
 
 		&:hover ~ .cursor {
-			transform: translate(-50%, -50%) scale(8);
+			transform: translate(-50%, -50%) scale(18);
+		}
+
+		.number {
+			position: absolute;
+			color: var(--color-main-red);
+			font-size: 2rem;
 		}
 	}
 
 	.menuSpan {
 		display: inline-block;
 		color: var(--color-white);
-		font-size: 3.6rem;
+		font-size: 7.2rem;
 		font-weight: 400;
-		text-transform: uppercase;
+		text-transform: lowercase;
 		pointer-events: none;
 		transition: transform 0.1s linear;
 	}

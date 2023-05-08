@@ -1,94 +1,38 @@
 import { useRef, useState, useEffect } from 'react';
-import { gsap } from 'gsap';
-import useIsMobile from '../../helpers/useIsMobile';
 import Link from 'next/link';
-import clsx from 'clsx';
-import styles from './Menu.module.css';
+import {motion, useAnimate, useCycle } from "framer-motion"
+import styles from './Menu.module.scss';
+
+const sidebar = {
+	open: (height = 1000) => ({
+	  clipPath: `circle(${height * 3 + 200}px at calc(100% - 70px) 7rem)`,
+	  transition: {
+		type: "spring",
+		stiffness: 20,
+		restDelta: 2
+	  }
+	}),
+	closed: {
+	  clipPath: "circle(0px at calc(100% - 70px) 7rem)",
+	  transition: {
+		delay: 0.25,
+		type: "spring",
+		stiffness: 400,
+		damping: 40
+	  }
+	}
+  };
 
 const Menu = () => {
-	const isMobile = useIsMobile(900);
 
-	const [menuState, setMenuState] = useState({
-		isOpened: false,
-		inMotion: false,
-	});
+	const [isOpen, toggleOpen] = useCycle(false, true);
 
 	const burgerRef = useRef(null);
-	const menuRef = useRef(null);
 
 	const handleBurgerClick = () => {
 		const burger = burgerRef.current;
-		const header = document.querySelector('[data-main-header]');
 
-		const ease = 'power4.out';
-
-		if (!menuState.isOpened) {
-			setMenuState((prevState) => ({
-				...prevState,
-				inMotion: true,
-			}));
-
-			gsap.set(menuRef.current, {
-				display: 'initial',
-			});
-
-			!isMobile &&
-				header &&
-				gsap.to(header, {
-					x: '-20vw',
-					duration: 0.5,
-				});
-
-			gsap.to(menuRef.current, {
-				opacity: 1,
-				duration: 0.5,
-				ease,
-				onComplete: () => {
-					setMenuState((prevState) => ({
-						...prevState,
-						isOpened: true,
-						inMotion: false,
-					}));
-				},
-			});
-			// document.body.style.height = '100%';
-			// document.body.style.overflow = 'hidden';
-		}
-
-		if (menuState.isOpened) {
-			setMenuState((prevState) => ({
-				...prevState,
-				inMotion: true,
-			}));
-
-			!isMobile &&
-				header &&
-				gsap.to(header, {
-					x: 0,
-					duration: 0.5,
-				});
-
-			gsap.to(menuRef.current, {
-				opacity: 0,
-				duration: 0.5,
-				ease,
-			});
-
-			gsap.set(menuRef.current, {
-				delay: 0.5,
-				display: 'none',
-				onComplete: () => {
-					setMenuState((prevState) => ({
-						...prevState,
-						isOpened: false,
-						inMotion: false,
-					}));
-				},
-			});
-
-			// document.body.style.height = 'initial';
-			// document.body.style.overflow = 'initial';
-		}
+		toggleOpen();
 
 		burger.classList.toggle('is-active');
 	};
@@ -133,16 +77,18 @@ const Menu = () => {
 		};
 	}, []);
 
+	
 	return (
 		<>
 			<div className={styles.wrapper}>
 				<Link href="/" className={styles.logo}>
 					khan.project
 				</Link>
+	
 				<button
 					ref={burgerRef}
 					className="hamburger hamburger--spin"
-					onClick={menuState.inMotion ? () => {} : handleBurgerClick}
+					onClick={handleBurgerClick}
 					type="button"
 					aria-label="Menu"
 					aria-controls="navigation"
@@ -151,21 +97,30 @@ const Menu = () => {
 						<span className="hamburger-inner"></span>
 					</span>
 				</button>
+	
 			</div>
-			<div ref={menuRef} className={styles.menuSection}>
+			<motion.div
+				initial={false}
+				animate={isOpen ? "open" : "closed"}
+				variants={sidebar}
+				className={styles.menuSection}
+				>
 				<nav className={styles.mainNav}>
 					<Link className={styles.mainMenuLinks} href="/projects">
 						<span className={styles.menuSpan}>Projects</span>
+						<span className={styles.number}>01</span>
 					</Link>
 					<Link className={styles.mainMenuLinks} href="/project">
 						<span className={styles.menuSpan}>Process</span>
+						<span className={styles.number}>02</span>
 					</Link>
 					<Link className={styles.mainMenuLinks} href="/project">
 						<span className={styles.menuSpan}>Contact</span>
+						<span className={styles.number}>03</span>
 					</Link>
 					<div className={styles.cursor}></div>
 				</nav>
-			</div>
+			</motion.div>
 		</>
 	);
 };

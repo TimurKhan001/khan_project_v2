@@ -1,6 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 import Image from 'next/image';
 import PageLayout from '../../src/components/layouts/pageLayout';
 import Menu from '../../src/components/menu/Menu';
+import Link from 'next/link';
+import AnimationLayout from '../../src/components/layouts/animationLayout';
+import clsx from 'clsx';
+import ScrollProgress from '../../src/components/scrollProgress/scrollProgress';
 import styles from './index.module.css';
 
 // This function gets called at build time
@@ -18,27 +23,29 @@ export async function getStaticProps() {
 	};
 }
 
-const Project = ({
-	name,
-	year,
-	mainPicture,
-	category,
-	gallery,
-	description,
-}) => {
+const Project = ({ _id, name, year, mainPicture, category, orientation }) => {
+	const isVertical = orientation === 'vertical';
+
 	return (
-		<div className={styles.project}>
-			<div className={styles.projectImage}>
-				<Image
-					src={mainPicture}
-					alt={`${name}-project`}
-					fill={true}
-					sizes="(max-width: 768px) 100vw,
+		<div
+			className={clsx(
+				styles.project,
+				isVertical && styles.verticalProject
+			)}
+		>
+			<Link href={`/projects/${_id}`}>
+				<div className={styles.projectImage}>
+					<Image
+						src={mainPicture}
+						alt={`${name}-project`}
+						fill={true}
+						sizes="(max-width: 768px) 100vw,
 					(max-width: 1200px) 50vw,
 					33vw"
-					priority
-				/>
-			</div>
+						priority
+					/>
+				</div>
+			</Link>
 			<span className={styles.projectName}>
 				{name} {year}
 			</span>
@@ -53,37 +60,26 @@ const Projects = ({ projects }) => {
 	));
 
 	return (
-		<div className={styles.wrapper}>
-			<Menu />
-			<PageLayout>
-				<header>
-					<h1>Work</h1>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing
-						elit. Nisi eos est dolorem ab sed. Vero ratione quia
-						obcaecati doloremque earum rerum fugiat, nihil
-						praesentium! Quidem laborum non laboriosam neque velit
-						illo accusantium cumque nisi modi, aliquam vero rerum,
-						nemo a.
-					</p>
-				</header>
-				<section className={styles.gallery}>
-					{/* <div className={styles.project}>
-						<Image
-							src="https://khan-project.s3.eu-central-1.amazonaws.com/01.jpg"
-							alt="Picture of the author"
-							fill={true}
-							sizes="(max-width: 768px) 100vw,
-									(max-width: 1200px) 50vw,
-									33vw"
-							priority
-						/>
-						<span>Project name</span>
-					</div> */}
-					{gallery}
-				</section>
-			</PageLayout>
-		</div>
+		<AnimationLayout>
+			<ScrollProgress />
+			<div className={styles.wrapper}>
+				<Menu />
+				<PageLayout>
+					<header>
+						<h1>Projects</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing
+							elit. Nisi eos est dolorem ab sed. Vero ratione quia
+							obcaecati doloremque earum rerum fugiat, nihil
+							praesentium! Quidem laborum non laboriosam neque
+							velit illo accusantium cumque nisi modi, aliquam
+							vero rerum, nemo a.
+						</p>
+					</header>
+					<section className={styles.gallery}>{gallery}</section>
+				</PageLayout>
+			</div>
+		</AnimationLayout>
 	);
 };
 

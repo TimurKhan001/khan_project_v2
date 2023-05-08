@@ -1,9 +1,9 @@
 .wrapper {
-	--gap: clamp(5rem, 6vw, 8rem);
+	--gap: clamp(3rem, 5vw, 8rem);
 	--full: minmax(var(--gap), 1fr);
 	--content: min(130rem, 100% - var(--gap) * 2);
-	--popout: minmax(0, 4rem);
-	--feature: minmax(0, 8rem);
+	--popout: minmax(0, 8rem);
+	--feature: minmax(0, 12rem);
 
 	width: 100%;
 	display: grid;
@@ -12,7 +12,7 @@
 		[feature-start] var(--feature)
 		[popout-start] var(--popout)
 		[content-start] var(--content) [content-end]
-		var(--popout) [popout-end] var(--feature) [popout-end] var(--full) [full-end];
+		var(--popout) [popout-end] var(--feature) [feature-end] var(--full) [full-end];
 	overflow: hidden;
 
 	& > * {

@@ -1,0 +1,98 @@
+.wrapper {
+	width: 100vw;
+	height: fit-content;
+	background: var(--color-black-dark);
+
+	.absoluteMenu {
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.hero {
+		width: 100%;
+		height: 90dvh;
+		position: relative;
+		z-index: 0;
+
+		img {
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.projectInfo {
+		color: var(--color-white);
+		background: var(--color-black-dark);
+		height: 10dvh;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.arrowLeft {
+			width: min(3vw, 2rem);
+		}
+
+		a {
+			width: 30%;
+			display: flex;
+			align-items: center;
+			color: var(--color-white);
+			text-decoration: none;
+
+			&:hover {
+				color: var(--color-red);
+				fill: var(--color-red) !important;
+			}
+
+			span {
+				margin-left: min(1vw, 1rem);
+			}
+		}
+
+		a:hover > .arrowLeft {
+			fill: var(--color-red) !important;
+		}
+	}
+
+	.projectDescription {
+		margin: var(--standart-sections-margin);
+		background-color: var(--color-black-dark);
+		color: var(--color-white);
+	}
+
+	.gallery {
+		display: grid;
+
+		.galleryImage {
+			position: relative;
+			margin: 0 0 min(10vw, 10rem) 0;
+
+			img {
+				object-fit: contain;
+			}
+
+			&:nth-child(even) {
+				width: 45%;
+				height: 25vw;
+			}
+
+			&:nth-child(odd) {
+				width: 60%;
+				height: 30vw;
+				place-self: end;
+			}
+
+			&:nth-child(4n + 2) {
+				width: 75%;
+				height: 40vw;
+			}
+
+			&:first-child {
+				width: 100%;
+				height: 50vw;
+			}
+		}
+	}
+}

@@ -1,4 +1,4 @@
-import styles from './pageLayout.module.css';
+import styles from './pageLayout.module.scss';
 
 const PageLayout = ({ children }) => {
 	return <div className={styles.wrapper}>{children}</div>;
