@@ -1,5 +1,4 @@
 import '../assets/styles/styles.scss';
-import '../assets/styles/queries.css';
 import '../assets/styles/hamburger.css';
 
 import { AnimatePresence } from 'framer-motion';

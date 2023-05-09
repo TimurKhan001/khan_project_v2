@@ -7,5 +7,10 @@
 	background: var(--color-main-red);
 	transform-origin: 0%;
 	z-index: 100;
-	opacity: 0.8;
+
+	/* opacity: 0.8; */
+
+	@media (max-width: 900px) {
+		background: var(--color-main-dark);
+	}
 }

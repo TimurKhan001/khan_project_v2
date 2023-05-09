@@ -1,5 +1,6 @@
 .wrapper {
 	--button-color: var(--color-main-dark);
+
 	width: 100%;
 	margin: 0 auto;
 	height: 15rem;
@@ -21,12 +22,20 @@
 			color: var(--color-main-red);
 			background: transparent;
 		}
+
+		@media (max-width: 600px) {
+			left: 25px;
+		}
 	}
 
 	button {
 		position: fixed;
 		right: 50px;
 		z-index: 100;
+
+		@media (max-width: 600px) {
+			right: 25px;
+		}
 	}
 
 	button::before {
@@ -38,6 +47,10 @@
 		border-radius: 50%;
 		top: -22px;
 		left: -9px;
+	}
+
+	@media (max-width: 600px) {
+		height: 10rem;
 	}
 }
 
@@ -51,7 +64,6 @@
 	right: 0;
 	top: 0;
 	z-index: 3;
-	
 
 	.cursor {
 		pointer-events: none;

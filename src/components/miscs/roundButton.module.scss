@@ -1,0 +1,35 @@
+.button {
+	--button-size: 10vw;
+
+	border: none;
+	width: var(--button-size);
+	aspect-ratio: 1 / 1;
+	border-radius: 50%;
+	cursor: pointer;
+
+	.arrowDown {
+		width: 5vw;
+		height: 5vw;
+	}
+}
+
+.red {
+	background-color: var(--color-main-red);
+
+	.arrowDown {
+		color: var(--color-white);
+		fill: var(--color-white);
+	}
+}
+
+.white {
+	width: 20vw;
+	background-color: var(--color-white);
+
+	.arrowDown {
+		width: 10vw;
+		height: 10vw;
+		color: var(--color-main-red);
+		fill: var(--color-main-red);
+	}
+}

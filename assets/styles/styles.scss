@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700&display=swap');
+@import url('./queries.scss');
 
 :root {
 	--color-white: #fff;
-	--color-black: #303030;
+	--color-grey-dark: #303030;
 	--color-black-dark: #101010;
 	--color-main-dark: #0c1923;
 	--color-main-red: #d70f3e;

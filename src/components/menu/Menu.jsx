@@ -1,33 +1,37 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import Link from 'next/link';
-import {motion, useAnimate, useCycle } from "framer-motion"
+import { motion, useCycle } from 'framer-motion';
+import useIsMobile from '../../helpers/useIsMobile';
 import styles from './Menu.module.scss';
 
-const sidebar = {
-	open: (height = 1000) => ({
-	  clipPath: `circle(${height * 3 + 200}px at calc(100% - 70px) 7rem)`,
-	  transition: {
-		type: "spring",
-		stiffness: 20,
-		restDelta: 2
-	  }
-	}),
-	closed: {
-	  clipPath: "circle(0px at calc(100% - 70px) 7rem)",
-	  transition: {
-		delay: 0.25,
-		type: "spring",
-		stiffness: 400,
-		damping: 40
-	  }
-	}
-  };
-
 const Menu = () => {
-
+	const isMobile = useIsMobile(600);
 	const [isOpen, toggleOpen] = useCycle(false, true);
-
 	const burgerRef = useRef(null);
+
+	const sidebar = {
+		open: (height = 1000) => ({
+			clipPath: `circle(${height * 3 + 200}px at calc(100% - ${
+				isMobile ? '40px' : '70px'
+			}) 7rem)`,
+			transition: {
+				type: 'spring',
+				stiffness: 20,
+				restDelta: 2,
+			},
+		}),
+		closed: {
+			clipPath: `circle(0px at calc(100% - ${
+				isMobile ? '40px' : '70px'
+			}) 7rem)`,
+			transition: {
+				delay: 0.25,
+				type: 'spring',
+				stiffness: 400,
+				damping: 40,
+			},
+		},
+	};
 
 	const handleBurgerClick = () => {
 		const burger = burgerRef.current;
@@ -77,14 +81,13 @@ const Menu = () => {
 		};
 	}, []);
 
-	
 	return (
 		<>
 			<div className={styles.wrapper}>
 				<Link href="/" className={styles.logo}>
 					khan.project
 				</Link>
-	
+
 				<button
 					ref={burgerRef}
 					className="hamburger hamburger--spin"
@@ -97,14 +100,13 @@ const Menu = () => {
 						<span className="hamburger-inner"></span>
 					</span>
 				</button>
-	
 			</div>
 			<motion.div
 				initial={false}
-				animate={isOpen ? "open" : "closed"}
+				animate={isOpen ? 'open' : 'closed'}
 				variants={sidebar}
 				className={styles.menuSection}
-				>
+			>
 				<nav className={styles.mainNav}>
 					<Link className={styles.mainMenuLinks} href="/projects">
 						<span className={styles.menuSpan}>Projects</span>
