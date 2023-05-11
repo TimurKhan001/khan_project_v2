@@ -4,13 +4,7 @@
 	left: 0;
 	right: 0;
 	height: 1rem;
-	background: var(--color-main-red);
+	background: var(--color-main-red-light);
 	transform-origin: 0%;
 	z-index: 100;
-
-	/* opacity: 0.8; */
-
-	@media (max-width: 900px) {
-		background: var(--color-main-dark);
-	}
 }

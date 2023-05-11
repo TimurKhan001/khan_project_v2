@@ -13,7 +13,7 @@ const Menu = () => {
 		open: (height = 1000) => ({
 			clipPath: `circle(${height * 3 + 200}px at calc(100% - ${
 				isMobile ? '40px' : '70px'
-			}) 7rem)`,
+			}) ${isMobile ? '40px' : '70px'})`,
 			transition: {
 				type: 'spring',
 				stiffness: 20,
@@ -23,7 +23,7 @@ const Menu = () => {
 		closed: {
 			clipPath: `circle(0px at calc(100% - ${
 				isMobile ? '40px' : '70px'
-			}) 7rem)`,
+			}) ${isMobile ? '40px' : '70px'})`,
 			transition: {
 				delay: 0.25,
 				type: 'spring',

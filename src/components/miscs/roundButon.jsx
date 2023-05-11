@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import ArrowDown from '../../../public/images/arrow_down.svg';
 import clsx from 'clsx';
 import { useState } from 'react';
+import buttonsTransition from '../../configs/buttonsTransition';
+import useIsMobile from '../../helpers/useIsMobile';
 import styles from './roundButton.module.scss';
 
 const svgVariants = {
@@ -11,26 +13,25 @@ const svgVariants = {
 };
 
 const RoundButton = ({ handleClick, type = 'red' }) => {
-	const [isHovered, setIsHovered] = useState(false);
+	const isMobile = useIsMobile(900);
+	const [isHovered, setIsHovered] = useState(isMobile ? true : false);
+
+	const animationInitialState = isMobile ? { opacity: 1 } : 'hidden';
 
 	return (
 		<motion.button
 			whileHover={{ scale: 1.1 }}
 			whileFocus={{ scale: 1.1 }}
 			whileTap={{ scale: 0.9 }}
-			transition={{
-				type: 'spring',
-				stiffness: 400,
-				damping: 10,
-			}}
+			transition={buttonsTransition}
 			onHoverStart={() => setIsHovered(true)}
 			onHoverEnd={() => setIsHovered(false)}
 			onClick={handleClick}
 			className={clsx(styles.button, styles[type])}
 		>
 			<motion.span
-				initial="hidden"
-				// animate={isHovered ? 'hover' : 'hidden'}
+				initial={animationInitialState}
+				animate={isHovered ? 'hover' : animationInitialState}
 				exit="exit"
 				variants={svgVariants}
 			>

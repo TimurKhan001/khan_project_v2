@@ -1,4 +1,9 @@
 .wrapper {
 	height: 200vh;
 	background: var(--color-main-background);
+
+	.introSection {
+		grid-column: full-start / feature-end;
+		height: 40vw;
+	}
 }
