@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap');
 @import url('./queries.scss');
 
 :root {
@@ -11,6 +11,7 @@
 	--color-main-background: #f6e8df;
 	--color-red: #f15a5b;
 	--standart-sections-margin: min(5vw, 7.5rem) 0;
+	--additional-mobile-margin: min(10vw, 10rem) 0;
 }
 
 * {
@@ -48,10 +49,17 @@ h2 {
 	font-weight: 600;
 }
 
+h3 {
+	font-size: clamp(2.4rem, 2.5vw, 3.2rem);
+	letter-spacing: 1pt;
+	font-weight: 400;
+}
+
 p {
-	font-size: clamp(1.6rem, 2vw, 2rem);
-	line-height: clamp(2.5rem, 2.2vw, 2.6rem);
-	font-weight: 500;
+	font-size: clamp(1.6rem, 1.2vw, 2.4rem);
+	line-height: 1.4;
+	letter-spacing: 1pt;
+	font-weight: 300;
 }
 
 br {

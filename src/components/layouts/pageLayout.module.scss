@@ -14,8 +14,6 @@
 		[content-start] var(--content) [content-end]
 		var(--popout) [popout-end] var(--feature) [feature-end] var(--full) [full-end];
 
-	// overflow: hidden;
-
 	& > * {
 		grid-column: content;
 	}

@@ -33,6 +33,7 @@
 
 .heroSectionMobile {
 	grid-column: full;
+	margin-bottom: min(15vw, 15rem);
 
 	.redWrapper {
 		margin: var(--standart-sections-margin);

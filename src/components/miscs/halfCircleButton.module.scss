@@ -1,8 +1,12 @@
 .wrapper {
 	--width: 50vw;
+	--top: 10vw;
 
+	height: calc(var(--width) - var(--top));
+	top: calc(var(--top) * -1);
 	position: relative;
 	z-index: 1;
+	cursor: pointer;
 
 	.firstLayer {
 		position: absolute;
@@ -10,8 +14,28 @@
 		width: var(--width);
 		aspect-ratio: 1 / 1;
 		background-color: var(--color-main-red);
-		// clip-path: circle(40% at 0% 50%);
 		z-index: 1;
+
+		.iconStyle {
+			position: absolute;
+			z-index: 2;
+			top: 50%;
+			left: 20%;
+			width: calc(var(--width) / 5);
+			height: calc(var(--width) / 5);
+			transform: translate(-50%, -50%);
+
+			path {
+				color: var(--color-white);
+				fill: var(--color-white);
+			}
+		}
+
+		.leftSideIcon {
+			left: unset;
+			right: 20%;
+			transform: translate(50%, -50%);
+		}
 	}
 
 	.secondLayer {
@@ -20,8 +44,12 @@
 		left: 0;
 		width: calc(var(--width) * 1.25);
 		aspect-ratio: 1 / 1;
-		clip-path: circle(50% at 0% 50%);
 		background-color: rgb(215 15 62 / 10%);
 		z-index: 0;
+	}
+
+	.changeDirection {
+		left: unset;
+		right: 0;
 	}
 }

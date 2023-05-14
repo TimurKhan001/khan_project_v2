@@ -1,7 +1,7 @@
 const buttonTarnsition = {
 	type: 'spring',
-	stiffness: 400,
-	damping: 10,
+	stiffness: 250,
+	damping: 12,
 };
 
 export default buttonTarnsition;
