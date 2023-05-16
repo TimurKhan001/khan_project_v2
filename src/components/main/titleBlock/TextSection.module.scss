@@ -1,0 +1,12 @@
+.wrapper {
+	margin: var(--standart-sections-margin);
+	display: grid;
+	place-items: center;
+	text-align: center;
+	gap: 4rem;
+
+	@media (max-width: 900px) {
+		text-align: left;
+		place-items: start;
+	}
+}

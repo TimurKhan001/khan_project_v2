@@ -1,4 +1,20 @@
 .wrapper {
 	min-height: 300vh;
 	background: var(--color-main-background);
+
+	.marginWrapper {
+		margin: min(10vw, 10rem) 0;
+	}
+
+	.gradient {
+		grid-column: full;
+		height: min(25vw, 20rem);
+		background: linear-gradient(180deg, #f6e8df 0%, #fff 100%);
+	}
+
+	.temporary {
+		grid-column: full;
+		height: 50vw;
+		background-color: var(--color-white);
+	}
 }
