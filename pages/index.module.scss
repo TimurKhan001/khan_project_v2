@@ -17,4 +17,15 @@
 		height: 50vw;
 		background-color: var(--color-white);
 	}
+
+	.whiteSections {
+		grid-column: full;
+		display: inherit;
+		grid-template-columns: inherit;
+		background: var(--color-white);
+
+		& > * {
+			grid-column: content;
+		}
+	}
 }

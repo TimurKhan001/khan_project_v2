@@ -4,7 +4,7 @@ import Menu from '../../src/components/menu/Menu';
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
-import ArrowLeft from '../../public/images/arrow_left.svg';
+// import ArrowLeft from '../../public/images/arrow_left.svg';
 import styles from './id.module.css';
 
 // This function gets called at build time
@@ -69,7 +69,7 @@ const ProjectDetails = ({ projectData }) => {
 				<PageLayout>
 					<div className={clsx(styles.projectInfo, 'text-common')}>
 						<Link href="/projects">
-							<ArrowLeft className={styles.arrowLeft} />
+							{/* <ArrowLeft className={styles.arrowLeft} /> */}
 							<span>To all projects</span>
 						</Link>
 						<span>{name}</span>

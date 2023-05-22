@@ -2,15 +2,20 @@ import buttonsTransition from '../../configs/buttonsTransition';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import clsx from 'clsx';
+import useIsMobile from '../../helpers/useIsMobile';
 import styles from './halfCircleButton.module.scss';
 
 const HalfCircleButton = ({
 	icon: Icon,
 	size = '50vw', // px or vw
 	direction = 'right', // left or right
+	top = '10vw',
 	onClick,
 }) => {
-	const [isHovered, setIsHovered] = useState(false);
+	const isMobile = useIsMobile(900);
+	const [isHovered, setIsHovered] = useState(isMobile ? true : false);
+
+	const animationInitialState = isMobile ? { opacity: 1 } : 'hidden';
 
 	const variants = {
 		right: {
@@ -31,7 +36,7 @@ const HalfCircleButton = ({
 
 	return (
 		<motion.section
-			style={{ '--width': size }}
+			style={{ '--width': size, '--top': top }}
 			className={styles.wrapper}
 			onHoverStart={() => setIsHovered(true)}
 			onHoverEnd={() => setIsHovered(false)}
@@ -48,8 +53,8 @@ const HalfCircleButton = ({
 				)}
 			>
 				<motion.span
-					initial={'hidden'}
-					animate={isHovered ? 'hover' : 'hidden'}
+					initial={animationInitialState}
+					animate={isHovered ? 'hover' : animationInitialState}
 					exit="exit"
 					variants={svgVariants}
 				>

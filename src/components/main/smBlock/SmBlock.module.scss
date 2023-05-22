@@ -1,0 +1,51 @@
+.wrapper {
+	margin: var(--standart-sections-margin);
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-auto-flow: row;
+
+	h3 {
+		width: 18ch;
+		margin-bottom: 4rem;
+	}
+
+	p {
+		width: 26ch;
+	}
+
+	.imageSection {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		cursor: pointer;
+
+		.image {
+			width: 75%;
+			aspect-ratio: 1;
+			position: relative;
+			filter: saturate(10%);
+
+			img {
+				border-radius: 50px;
+			}
+		}
+	}
+
+	@media (max-width: 900px) {
+		grid-auto-flow: column;
+		grid-template-columns: none;
+		grid-template-rows: auto auto;
+		gap: min(15vw, 10rem);
+
+		h3,
+		p {
+			width: 100%;
+		}
+
+		.imageSection {
+			.image {
+				width: 60%;
+			}
+		}
+	}
+}

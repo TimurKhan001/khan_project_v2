@@ -1,5 +1,6 @@
 import '../assets/styles/styles.scss';
 import '../assets/styles/hamburger.css';
+import 'swiper/css';
 
 import { AnimatePresence } from 'framer-motion';
 

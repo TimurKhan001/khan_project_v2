@@ -5,6 +5,14 @@
 	text-align: center;
 	gap: 4rem;
 
+	.beige {
+		background-color: var(--color-main-background);
+	}
+
+	.white {
+		background-color: var(--color-white);
+	}
+
 	@media (max-width: 900px) {
 		text-align: left;
 		place-items: start;
