@@ -9,18 +9,23 @@ import SmallGallery from '../src/components/main/smallGallery/SmallGallery';
 import useIsMobile from '../src/helpers/useIsMobile';
 import Button from '../src/components/miscs/button';
 import SMBlock from '../src/components/main/smBlock/SmBlock';
-import styles from './index.module.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import TestimonialsSection from '../src/components/main/testimonials/testimonialsSection';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const HomePage = () => {
+import styles from './index.module.scss';
+
+const HomePage = (props) => {
 	const isMobile = useIsMobile(900);
+	const { t } = useTranslation();
+	console.log(props);
 	return (
 		<AnimationLayout>
 			<ScrollProgress />
 			<div className={styles.wrapper}>
 				<Menu />
 				<PageLayout>
-					<Header />
+					<Header heading={t('heading')} />
 					<InfoBlock />
 					<TextSection
 						heading={
@@ -48,54 +53,20 @@ const HomePage = () => {
 						<SMBlock />
 						<div style={{ height: 'min(5vw, 10rem)' }}></div>
 						<TextSection heading="khan.project | hear what our clients have to say" />
-						<Swiper
-							spaceBetween={50}
-							slidesPerView={3}
-							onSlideChange={() => console.log('slide change')}
-							onSwiper={(swiper) => console.log(swiper)}
-						>
-							<SwiperSlide>
-								<div
-									style={{
-										width: '30rem',
-										height: '30rem',
-										background: 'yellow',
-									}}
-								></div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div
-									style={{
-										width: '30rem',
-										height: '30rem',
-										background: 'green',
-									}}
-								></div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div
-									style={{
-										width: '30rem',
-										height: '30rem',
-										background: 'blue',
-									}}
-								></div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div
-									style={{
-										width: '30rem',
-										height: '30rem',
-										background: 'red',
-									}}
-								></div>
-							</SwiperSlide>
-						</Swiper>
+						<TestimonialsSection />
 					</div>
 				</PageLayout>
 			</div>
 		</AnimationLayout>
 	);
 };
+
+export async function getStaticProps({ locale }: any) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale, ['common'])),
+		},
+	};
+}
 
 export default HomePage;

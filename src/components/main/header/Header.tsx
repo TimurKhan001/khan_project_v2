@@ -2,32 +2,28 @@ import Image from 'next/image';
 import headerImage from '../../../../public/images/header_image.png';
 import useIsMobile from '../../../helpers/useIsMobile';
 import RoundButton from '../../miscs/roundButon';
+import scrollTo from '../../../helpers/animations/scrollTo';
+import { useRouter } from 'next/router';
 import styles from './Header.module.scss';
 
-const scrollTo = (element) => {
-	let bodyRect = document.body.getBoundingClientRect();
-	let elemRect = element.getBoundingClientRect();
-	let offset = elemRect.top - bodyRect.top;
+interface IHeader {
+	heading: string;
+}
 
-	window.scrollTo({
-		top: offset - 100, // subtract the desired offset, in this case, 100px
-		behavior: 'smooth',
-	});
-};
-
-const Header = () => {
+const Header = ({ heading }: IHeader) => {
 	const isMobile = useIsMobile(900);
+	const headingWithBreaks = heading.split(' ').join('<br />');
 
 	return (
 		<>
 			{isMobile ? (
 				<header className={styles.heroSectionMobile}>
 					<div className={styles.redWrapper}>
-						<h1>
-							clean
-							<br /> simple
-							<br /> aesthetic
-						</h1>
+						<h1
+							dangerouslySetInnerHTML={{
+								__html: headingWithBreaks,
+							}}
+						/>
 						<div className={styles.downButtonMobile}>
 							<RoundButton
 								handleClick={() => {
@@ -44,11 +40,11 @@ const Header = () => {
 				</header>
 			) : (
 				<header className={styles.heroSection}>
-					<h1>
-						clean
-						<br /> simple
-						<br /> aesthetic
-					</h1>
+					<h1
+						dangerouslySetInnerHTML={{
+							__html: headingWithBreaks,
+						}}
+					/>
 					<div className={styles.headerImage}>
 						<Image
 							src={headerImage}

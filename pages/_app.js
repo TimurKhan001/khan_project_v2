@@ -1,10 +1,12 @@
 import '../assets/styles/styles.scss';
 import '../assets/styles/hamburger.css';
 import 'swiper/css';
+import 'swiper/css/navigation';
 
+import { appWithTranslation } from 'next-i18next';
 import { AnimatePresence } from 'framer-motion';
 
-export default function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component, pageProps, router }) {
 	return (
 		<main>
 			<AnimatePresence mode="wait" initial={false}>
@@ -13,3 +15,5 @@ export default function MyApp({ Component, pageProps, router }) {
 		</main>
 	);
 }
+
+export default appWithTranslation(MyApp);

@@ -1,0 +1,26 @@
+.wrapper {
+	margin: var(--standart-sections-margin);
+
+	@media (max-width: 600px) {
+		grid-column: full !important;
+	}
+}
+
+.section {
+	margin-inline: auto;
+	width: 50%;
+	padding: min(5rem, 5vw);
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 8rem;
+
+	.quotes {
+		place-self: center;
+	}
+
+	@media (max-width: 900px) {
+		width: 80%;
+	}
+}
