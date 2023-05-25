@@ -10,22 +10,69 @@ import useIsMobile from '../src/helpers/useIsMobile';
 import Button from '../src/components/miscs/button';
 import SMBlock from '../src/components/main/smBlock/SmBlock';
 import TestimonialsSection from '../src/components/main/testimonials/testimonialsSection';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
+import Head from 'next/head';
+import { FormattedMessage, useIntl } from 'react-intl';
 import styles from './index.module.scss';
+import { useRouter } from 'next/router';
+
+export async function getStaticProps(props) {
+	const locales = await fetch('http://localhost:3000/locales/en.json');
+	const json = await locales.json();
+
+	return {
+		props: {
+			...json,
+		},
+	};
+}
 
 const HomePage = (props) => {
 	const isMobile = useIsMobile(900);
-	const { t } = useTranslation();
-	console.log(props);
+
+	const intl = useIntl();
+
+	const title = intl.formatMessage({ id: 'heading' });
+
+	console.log(title);
+
 	return (
 		<AnimationLayout>
+			<Head>
+				<title>khan.project architect EU</title>
+				<meta
+					name="description"
+					content="Discover the visionary architectural designs by Nargiza Khananova, the architect with over 15 years of experience, based in the Austrian Alps. Specializing in sustainable and modern architecture. Explore her extensive portfolio and transformative approach to design."
+				/>
+				<link rel="icon" href="/favicon.ico" />
+
+				{/* Add hreflang links */}
+				<link
+					rel="alternate"
+					href="http://example.com"
+					hrefLang="x-default"
+				/>
+				<link rel="alternate" href="http://example.com" hrefLang="en" />
+				<link
+					rel="alternate"
+					href="http://example.com/ar"
+					hrefLang="ar"
+				/>
+				<link
+					rel="alternate"
+					href="http://example.com/fr"
+					hrefLang="fr"
+				/>
+				<link
+					rel="alternate"
+					href="http://example.com/nl-NL"
+					hrefLang="nl-NL"
+				/>
+			</Head>
 			<ScrollProgress />
 			<div className={styles.wrapper}>
 				<Menu />
 				<PageLayout>
-					<Header heading={t('heading')} />
+					<Header heading={intl.formatMessage({ id: 'heading' })} />
 					<InfoBlock />
 					<TextSection
 						heading={
@@ -60,13 +107,5 @@ const HomePage = (props) => {
 		</AnimationLayout>
 	);
 };
-
-export async function getStaticProps({ locale }: any) {
-	return {
-		props: {
-			...(await serverSideTranslations(locale, ['common'])),
-		},
-	};
-}
 
 export default HomePage;
