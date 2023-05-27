@@ -11,29 +11,12 @@ import Button from '../src/components/miscs/button';
 import SMBlock from '../src/components/main/smBlock/SmBlock';
 import TestimonialsSection from '../src/components/main/testimonials/testimonialsSection';
 import Head from 'next/head';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import styles from './index.module.scss';
-import { useRouter } from 'next/router';
 
-export async function getStaticProps(props) {
-	const locales = await fetch('http://localhost:3000/locales/en.json');
-	const json = await locales.json();
-
-	return {
-		props: {
-			...json,
-		},
-	};
-}
-
-const HomePage = (props) => {
+const HomePage = () => {
 	const isMobile = useIsMobile(900);
-
 	const intl = useIntl();
-
-	const title = intl.formatMessage({ id: 'heading' });
-
-	console.log(title);
 
 	return (
 		<AnimationLayout>

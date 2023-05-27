@@ -8,33 +8,32 @@ interface ITestimonial {
 
 type Testimonials = ITestimonial[];
 
-const getTestimonials = (): Testimonials => [
-	{ id: 1, text: 'sdfsdfasdffdsa', author: 'dfasdfsad' },
-	// {
-	// 	id: 1,
-	// 	text: i18n.t('testimonial1Text'),
-	// 	author: i18n.t('testimonial1Author'),
-	// },
-	// {
-	// 	id: 2,
-	// 	text: i18n.t('testimonial2Text'),
-	// 	author: i18n.t('testimonial2Author'),
-	// },
-	// {
-	// 	id: 3,
-	// 	text: i18n.t('testimonial3Text'),
-	// 	author: i18n.t('testimonial3Author'),
-	// },
-	// {
-	// 	id: 4,
-	// 	text: i18n.t('testimonial4Text'),
-	// 	author: i18n.t('testimonial4Author'),
-	// },
-	// {
-	// 	id: 5,
-	// 	text: i18n.t('testimonial5Text'),
-	// 	author: i18n.t('testimonial5Author'),
-	// },
+const getTestimonials = (intl): Testimonials => [
+	{
+		id: 1,
+		text: intl.formatMessage({ id: 'testimonial1Text' }),
+		author: intl.formatMessage({ id: 'testimonial1Author' }),
+	},
+	{
+		id: 2,
+		text: intl.formatMessage({ id: 'testimonial2Text' }),
+		author: intl.formatMessage({ id: 'testimonial2Author' }),
+	},
+	{
+		id: 3,
+		text: intl.formatMessage({ id: 'testimonial3Text' }),
+		author: intl.formatMessage({ id: 'testimonial3Author' }),
+	},
+	{
+		id: 4,
+		text: intl.formatMessage({ id: 'testimonial4Text' }),
+		author: intl.formatMessage({ id: 'testimonial4Author' }),
+	},
+	{
+		id: 5,
+		text: intl.formatMessage({ id: 'testimonial5Text' }),
+		author: intl.formatMessage({ id: 'testimonial5Author' }),
+	},
 ];
 
 export default getTestimonials;

@@ -5,9 +5,12 @@ import ArrowLeft from '../../../../public/icons/swiperLeft.svg';
 import ArrowRight from '../../../../public/icons/swiperRight.svg';
 import Quotes from '../../../../public/icons/quotes.svg';
 import getTestimonials from '../../../configs/testimonials';
+import { useIntl } from 'react-intl';
 
 const TestimonialsSection = () => {
-	const testimonials = getTestimonials().map(({ id, text, author }) => (
+	const intl = useIntl();
+
+	const testimonials = getTestimonials(intl).map(({ id, text, author }) => (
 		<SwiperSlide key={id}>
 			<div className={styles.section}>
 				<Quotes className={styles.quotes} />
@@ -27,8 +30,8 @@ const TestimonialsSection = () => {
 					nextEl: '.swiper-button-next',
 					prevEl: '.swiper-button-prev',
 				}}
-				onSwiper={(swiper) => console.log(swiper)}
-				onSlideChange={() => console.log('slide change')}
+				onSwiper={() => {}}
+				onSlideChange={() => {}}
 			>
 				{testimonials}
 				<div className="swiper-button-next">

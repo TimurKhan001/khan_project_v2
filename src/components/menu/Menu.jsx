@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { motion, useCycle } from 'framer-motion';
 import useIsMobile from '../../helpers/useIsMobile';
 import styles from './Menu.module.scss';
+import LanguageSwitcher from '../miscs/languageSwitch/languageSwitch';
 
 const Menu = () => {
 	const isMobile = useIsMobile(600);
@@ -121,6 +122,7 @@ const Menu = () => {
 						<span className={styles.number}>03</span>
 					</Link>
 					<div className={styles.cursor}></div>
+					<LanguageSwitcher />
 				</nav>
 			</motion.div>
 		</>
