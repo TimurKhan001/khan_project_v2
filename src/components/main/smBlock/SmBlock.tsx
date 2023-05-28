@@ -5,22 +5,20 @@ import HalfCircleButton from '../../miscs/halfCircleButton';
 import ThumbUp from '../../../../public/icons/thumb.svg';
 import useIsMobile from '../../../helpers/useIsMobile';
 
-const SMBlock = () => {
+interface ISMBlock {
+	heading: string;
+	text: string;
+}
+
+const SMBlock: React.FC<ISMBlock> = ({ heading, text }) => {
 	const isMobile = useIsMobile(900);
 	const buttonSize = isMobile ? '25vw' : '15vw';
 
 	return (
 		<section className={styles.wrapper}>
 			<article>
-				<h3>stay updated on our latest projects and design insights</h3>
-				<p>
-					Join our growing community of design enthusiasts, clients,
-					and industry professionals by following khan.project
-					architecture on social media. We regularly share project
-					updates, behind-the-scenes looks at our design process,
-					industry trends, and inspiration from the world of
-					architecture and design.
-				</p>
+				<h3>{heading}</h3>
+				<p>{text}</p>
 			</article>
 			<div className={styles.imageSection}>
 				<HalfCircleButton

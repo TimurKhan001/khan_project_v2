@@ -7,7 +7,7 @@
 	border-radius: 50%;
 	cursor: pointer;
 
-	.arrowDown {
+	.icon {
 		width: 5vw;
 		height: 5vw;
 	}
@@ -16,9 +16,18 @@
 .red {
 	background-color: var(--color-main-red);
 
-	.arrowDown {
+	.icon {
 		color: var(--color-white);
 		fill: var(--color-white);
+	}
+
+	@media (max-width: 900px) {
+		width: 20vw;
+
+		.icon {
+			width: 10vw;
+			height: 10vw;
+		}
 	}
 }
 
@@ -26,7 +35,7 @@
 	width: 20vw;
 	background-color: var(--color-white);
 
-	.arrowDown {
+	.icon {
 		width: 10vw;
 		height: 10vw;
 		color: var(--color-main-red);

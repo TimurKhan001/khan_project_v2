@@ -11,12 +11,14 @@ import Button from '../src/components/miscs/button';
 import SMBlock from '../src/components/main/smBlock/SmBlock';
 import TestimonialsSection from '../src/components/main/testimonials/testimonialsSection';
 import Head from 'next/head';
-import { useIntl } from 'react-intl';
+import ContactSection from '../src/components/main/contacts/contactsSection';
 import styles from './index.module.scss';
+import useFormatMessage from '../src/helpers/useFormatMessage';
 
 const HomePage = () => {
 	const isMobile = useIsMobile(900);
-	const intl = useIntl();
+
+	const getTranslation = useFormatMessage();
 
 	return (
 		<AnimationLayout>
@@ -55,35 +57,54 @@ const HomePage = () => {
 			<div className={styles.wrapper}>
 				<Menu />
 				<PageLayout>
-					<Header heading={intl.formatMessage({ id: 'heading' })} />
-					<InfoBlock />
+					<Header heading={getTranslation('heading')} />
+					<InfoBlock
+						heading={getTranslation('infoSectionHeading')}
+						text={getTranslation('infoSectionText')}
+						buttonText={getTranslation('infoSectionButtonText')}
+					/>
 					<TextSection
 						heading={
 							isMobile
-								? 'Dive into the world of the visionary architectural projects'
-								: 'Dive into the world of the visionary architectural projects and witness the future of sustainable design.'
+								? getTranslation(
+										'protfolioSectionHeadingMobile'
+								  )
+								: getTranslation(
+										'protfolioSectionHeadingDesktop'
+								  )
 						}
 					/>
 					<SmallGallery />
 					<TextSection
-						heading="khan.project | comprehensive architectural solutions tailored to your vision"
-						text="We offer a wide range of architectural services to meet the unique needs of each client. Our goal is to create innovative, sustainable, and functional designs that elevate the way people live, work, and interact with the spaces around them."
+						heading={getTranslation('servicesSectionHeading')}
+						text={getTranslation('servicesSectionText')}
 					>
 						<div className={styles.marginWrapper}>
 							<Button
 								backgroundColor="var(--color-main-dark)"
 								color="var(--color-white)"
-								text="Explore Our Services"
+								text={getTranslation(
+									'servicesSectionButtonText'
+								)}
 								handleClick={() => {}}
 							/>
 						</div>
 					</TextSection>
 					<div className={styles.gradient} />
 					<div className={styles.whiteSections}>
-						<SMBlock />
+						<SMBlock
+							heading={getTranslation('smSectionHeading')}
+							text={getTranslation('smSectionText')}
+						/>
 						<div style={{ height: 'min(5vw, 10rem)' }}></div>
-						<TextSection heading="khan.project | hear what our clients have to say" />
+						<TextSection
+							heading={getTranslation('testimonialsHeading')}
+						/>
 						<TestimonialsSection />
+						<ContactSection
+							heading={getTranslation('contactHeading')}
+							text={getTranslation('contactText')}
+						/>
 					</div>
 				</PageLayout>
 			</div>

@@ -18,3 +18,10 @@
 		place-items: start;
 	}
 }
+
+.alternativeAlign {
+	@media (max-width: 900px) {
+		text-align: center;
+		place-items: center;
+	}
+}

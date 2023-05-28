@@ -3,7 +3,7 @@ import headerImage from '../../../../public/images/header_image.png';
 import useIsMobile from '../../../helpers/useIsMobile';
 import RoundButton from '../../miscs/roundButon';
 import scrollTo from '../../../helpers/animations/scrollTo';
-import { useRouter } from 'next/router';
+import ArrowDown from '../../../../public/icons/arrow_down.svg';
 import styles from './Header.module.scss';
 
 interface IHeader {
@@ -34,6 +34,7 @@ const Header = ({ heading }: IHeader) => {
 									scrollTo(element);
 								}}
 								type="white"
+								Icon={ArrowDown}
 							/>
 						</div>
 					</div>
@@ -62,6 +63,7 @@ const Header = ({ heading }: IHeader) => {
 									scrollTo(element);
 								}}
 								type="red"
+								Icon={ArrowDown}
 							/>
 						</div>
 					</div>

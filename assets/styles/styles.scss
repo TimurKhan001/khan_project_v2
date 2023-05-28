@@ -33,20 +33,35 @@ html::-webkit-scrollbar {
 	display: none;
 }
 
-h1 {
-	font-size: clamp(4.8rem, 7.2vw, 10.8rem);
-	line-height: 1.4;
-	font-weight: 400;
-
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+dt,
+dd,
+blockquote,
+figcaption,
+caption {
 	&::selection {
 		color: var(--color-main-red);
 		background: transparent;
 	}
 }
 
+h1 {
+	font-size: clamp(4.8rem, 7.2vw, 10.8rem);
+	line-height: 1.4;
+	font-weight: 400;
+}
+
 h2 {
-	font-size: clamp(4rem, 9vw, 8rem);
-	font-weight: 600;
+	font-size: clamp(3.2rem, 3.6vw, 6.4rem);
+	letter-spacing: 1pt;
+	font-weight: 500;
 }
 
 h3 {

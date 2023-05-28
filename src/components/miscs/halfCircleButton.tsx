@@ -5,8 +5,18 @@ import clsx from 'clsx';
 import useIsMobile from '../../helpers/useIsMobile';
 import styles from './halfCircleButton.module.scss';
 
-const HalfCircleButton = ({
+interface IHalfCircleButton {
+	icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+	text?: string;
+	size: string;
+	direction: string;
+	top: string;
+	onClick: () => void;
+}
+
+const HalfCircleButton: React.FC<IHalfCircleButton> = ({
 	icon: Icon,
+	text,
 	size = '50vw', // px or vw
 	direction = 'right', // left or right
 	top = '10vw',
@@ -58,12 +68,15 @@ const HalfCircleButton = ({
 					exit="exit"
 					variants={svgVariants}
 				>
-					<Icon
-						className={clsx(
-							styles.iconStyle,
-							direction === 'left' && styles.leftSideIcon
-						)}
-					/>
+					{Icon && (
+						<Icon
+							className={clsx(
+								styles.iconStyle,
+								direction === 'left' && styles.leftSideIcon
+							)}
+						/>
+					)}
+					{text && <h2>{text}</h2>}
 				</motion.span>
 			</motion.div>
 			<motion.div

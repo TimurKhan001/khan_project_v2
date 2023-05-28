@@ -1,0 +1,39 @@
+.wrapper {
+	padding: var(--standart-sections-margin);
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+
+	.contacts {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+
+		.contact {
+			width: 100%;
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: center;
+			align-items: center;
+			gap: 1.5rem;
+
+			svg {
+				width: 30%;
+				height: 30%;
+
+				path {
+					fill: var(--color-main-red);
+				}
+			}
+		}
+
+		@media (max-width: 600px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.button {
+		margin: var(--standart-sections-margin);
+		display: grid;
+		place-content: center;
+	}
+}

@@ -1,5 +1,16 @@
 {
     "heading": "clean simple aesthetic",
+    "infoSectionHeading": "khan.project | crafting sustainable futures",
+    "infoSectionText": "Welcome to the official portfolio, where the future of architecture meets environmental responsibility. Nargiza Khananova is an architect with a passion for innovative design and a commitment to building a sustainable world through her creations. Discover her unique approach and explore the groundbreaking projects that have earned her recognition in the industry.",
+    "infoSectionButtonText": "About me",
+    "protfolioSectionHeadingDesktop": "Dive into the world of the visionary architectural projects and witness the future of sustainable design.",
+    "protfolioSectionHeadingMobile": "Dive into the world of the visionary architectural projects", 
+    "servicesSectionHeading": "khan.project | comprehensive architectural solutions tailored to your vision",
+    "servicesSectionText": "We offer a wide range of architectural services to meet the unique needs of each client. Our goal is to create innovative, sustainable, and functional designs that elevate the way people live, work, and interact with the spaces around them.",
+    "servicesSectionButtonText": "Explore Our Services",
+    "smSectionHeading": "stay updated on our latest projects and design insights",
+    "smSectionText": "Join our growing community of design enthusiasts, clients, and industry professionals by following khan.project architecture on social media. We regularly share project updates, behind-the-scenes looks at our design process, industry trends, and inspiration from the world of architecture and design.",
+    "testimonialsHeading": "khan.project | hear what our clients have to say",
     "testimonial1Text": "Working with the architect was an absolute pleasure. Their attention to detail and ability to understand our vision truly exceeded our expectations. Our dream home is now a reality, thanks to their expertise.",
     "testimonial1Author": "Michael R., Municipal Client",
     "testimonial2Text": "We were impressed by the architect's creative ideas and innovative designs. They transformed our space into something truly remarkable. Their professionalism and dedication throughout the project were commendable.",
@@ -9,5 +20,9 @@
     "testimonial4Text": "The architect's keen eye for detail and their ability to translate our vision into reality is remarkable. They patiently listened to our requirements and delivered a design that perfectly suited our style. We couldn't be happier!",
     "testimonial4Author": "Emily D.,  Residential Client",
     "testimonial5Text": "Working with the architect was an incredible experience. They brought a fresh perspective and innovative solutions to the table. Their expertise and professionalism made the entire process smooth and enjoyable. We are extremely satisfied with the results.",
-    "testimonial5Author": "David D.,  Residential Client"
+    "testimonial5Author": "David D.,  Residential Client",
+    "contactHeading": "hire us for your project",
+    "contactText": "Contact us in any convenient way to discuss the details.",
+    "contactMailUs": "mail us",
+    "contactPhoneUs": "phone us"
 }

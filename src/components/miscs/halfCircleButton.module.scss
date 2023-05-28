@@ -16,6 +16,15 @@
 		background-color: var(--color-main-red);
 		z-index: 1;
 
+		h2 {
+			color: var(--color-white);
+			position: absolute;
+			z-index: 2;
+			top: 50%;
+			left: 20%;
+			transform: translate(-50%, -50%);
+		}
+
 		.iconStyle {
 			position: absolute;
 			z-index: 2;

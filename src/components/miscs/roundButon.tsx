@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import ArrowDown from '../../../public/images/arrow_down.svg';
 import clsx from 'clsx';
 import { useState } from 'react';
 import buttonsTransition from '../../configs/buttonsTransition';
@@ -12,11 +11,24 @@ const svgVariants = {
 	exit: { opacity: 0 },
 };
 
-const RoundButton = ({ handleClick, type = 'red' }) => {
+interface IRoundButton {
+	handleClick: () => void;
+	type?: 'red' | 'white';
+	Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+	isAlwaysVisibleIcon?: boolean;
+}
+
+const RoundButton: React.FC<IRoundButton> = ({
+	handleClick,
+	type = 'red',
+	Icon,
+	isAlwaysVisibleIcon = false,
+}) => {
 	const isMobile = useIsMobile(900);
 	const [isHovered, setIsHovered] = useState(isMobile ? true : false);
 
-	const animationInitialState = isMobile ? { opacity: 1 } : 'hidden';
+	const animationInitialState =
+		isMobile || isAlwaysVisibleIcon ? { opacity: 1 } : 'hidden';
 
 	return (
 		<motion.button
@@ -35,7 +47,7 @@ const RoundButton = ({ handleClick, type = 'red' }) => {
 				exit="exit"
 				variants={svgVariants}
 			>
-				<ArrowDown className={styles.arrowDown} />
+				<Icon className={styles.icon} />
 			</motion.span>
 		</motion.button>
 	);
