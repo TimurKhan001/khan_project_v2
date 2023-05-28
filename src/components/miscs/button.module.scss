@@ -3,11 +3,15 @@
 	background: none;
 	color: inherit;
 	border: none;
-	padding: min(5vw, 5rem) min(10vw, 10rem);
+	padding: min(4.5vw, 4.5rem) min(9.5vw, 9.5rem);
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
 	font-size: clamp(1.6rem, 2.5vw, 3.2rem);
 	font-weight: 700;
 	border-radius: 100px;
+
+	@media (max-width: 1100px) {
+		padding: min(3.5vw, 3.5rem) min(7.5vw, 7.5rem);
+	}
 }

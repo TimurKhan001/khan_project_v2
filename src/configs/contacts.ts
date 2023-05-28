@@ -1,4 +1,4 @@
-import Envelope from '../../public/icons/envelope.svg';
+import Envelope from '../../public/icons/envelope-simple.svg';
 import Phone from '../../public/icons/phone.svg';
 import { IntlShape } from 'react-intl';
 

@@ -4,6 +4,7 @@ import portfolioImageThree from '../../../../public/images/portfolio3.jpeg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import buttonsTransition from '../../../configs/buttonsTransition';
+import ThreeDots from '../../miscs/threeDots/threeDots';
 import styles from './SmallGallery.module.scss';
 
 const images = [portfolioImageOne, portfolioImageTwo, portfolioImageThree];
@@ -31,11 +32,7 @@ const SmallGallery = () => {
 			</div>
 			<motion.div className={styles.text}>
 				<h1>portfolio</h1>
-				<div className={styles.threeDots}>
-					<span />
-					<span />
-					<span />
-				</div>
+				<ThreeDots color="red" />
 			</motion.div>
 		</section>
 	);

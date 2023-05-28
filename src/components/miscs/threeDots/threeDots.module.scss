@@ -1,0 +1,30 @@
+.wrapper {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: min(2.5rem, 2vw);
+
+	span {
+		display: inline-block;
+		width: min(7.5rem, 4vw);
+		height: min(7.5rem, 4vw);
+		border-radius: 50px;
+	}
+
+	@media (max-width: 900px) {
+		display: none;
+	}
+}
+
+.red {
+	span {
+		background-color: var(--color-main-red);
+	}
+}
+
+.white {
+	span {
+		background-color: var(--color-white);
+	}
+}

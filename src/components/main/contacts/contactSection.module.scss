@@ -15,6 +15,7 @@
 			justify-content: center;
 			align-items: center;
 			gap: 1.5rem;
+			cursor: pointer;
 
 			svg {
 				width: 30%;
@@ -35,5 +36,6 @@
 		margin: var(--standart-sections-margin);
 		display: grid;
 		place-content: center;
+		// display: none; /* remove after form design ready */
 	}
 }

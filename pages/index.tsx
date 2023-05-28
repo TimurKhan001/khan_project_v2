@@ -12,8 +12,9 @@ import SMBlock from '../src/components/main/smBlock/SmBlock';
 import TestimonialsSection from '../src/components/main/testimonials/testimonialsSection';
 import Head from 'next/head';
 import ContactSection from '../src/components/main/contacts/contactsSection';
-import styles from './index.module.scss';
 import useFormatMessage from '../src/helpers/useFormatMessage';
+import Footer from '../src/components/main/footer/footer';
+import styles from './index.module.scss';
 
 const HomePage = () => {
 	const isMobile = useIsMobile(900);
@@ -81,7 +82,7 @@ const HomePage = () => {
 					>
 						<div className={styles.marginWrapper}>
 							<Button
-								backgroundColor="var(--color-main-dark)"
+								backgroundColor="var(--color-dark-alt)"
 								color="var(--color-white)"
 								text={getTranslation(
 									'servicesSectionButtonText'
@@ -105,6 +106,7 @@ const HomePage = () => {
 							heading={getTranslation('contactHeading')}
 							text={getTranslation('contactText')}
 						/>
+						<Footer />
 					</div>
 				</PageLayout>
 			</div>
