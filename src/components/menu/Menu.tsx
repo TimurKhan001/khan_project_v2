@@ -2,10 +2,16 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useCycle } from 'framer-motion';
 import useIsMobile from '../../helpers/useIsMobile';
-import styles from './Menu.module.scss';
 import LanguageSwitcher from '../miscs/languageSwitch/languageSwitch';
+import clsx from 'clsx';
+import styles from './Menu.module.scss';
 
-const Menu = () => {
+interface IMenu {
+	type?: 'dark' | 'light';
+	sectionName?: string;
+}
+
+const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 	const isMobile = useIsMobile(600);
 	const [isOpen, toggleOpen] = useCycle(false, true);
 	const burgerRef = useRef(null);
@@ -85,10 +91,18 @@ const Menu = () => {
 	return (
 		<>
 			<div className={styles.wrapper}>
-				<Link href="/" className={styles.logo}>
+				<Link
+					href="/"
+					className={clsx(
+						styles.logo,
+						type === 'light' && styles.lightLogo
+					)}
+				>
 					khan.project
 				</Link>
-
+				{sectionName && (
+					<h3 className={styles.sectionName}>{sectionName}</h3>
+				)}
 				<button
 					ref={burgerRef}
 					className="hamburger hamburger--spin"
@@ -106,7 +120,10 @@ const Menu = () => {
 				initial={false}
 				animate={isOpen ? 'open' : 'closed'}
 				variants={sidebar}
-				className={styles.menuSection}
+				className={clsx(
+					styles.menuSection,
+					type === 'light' && styles.menuSectionLight
+				)}
 			>
 				<nav className={styles.mainNav}>
 					<Link className={styles.mainMenuLinks} href="/projects">

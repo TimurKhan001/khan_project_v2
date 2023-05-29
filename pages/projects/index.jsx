@@ -6,7 +6,8 @@ import Link from 'next/link';
 import AnimationLayout from '../../src/components/layouts/animationLayout';
 import clsx from 'clsx';
 import ScrollProgress from '../../src/components/scrollProgress/scrollProgress';
-import styles from './index.module.css';
+import Footer from '../../src/components/main/footer/footer';
+import styles from './index.module.scss';
 
 // This function gets called at build time
 export async function getStaticProps() {
@@ -39,44 +40,69 @@ const Project = ({ _id, name, year, mainPicture, category, orientation }) => {
 						src={mainPicture}
 						alt={`${name}-project`}
 						fill={true}
-						sizes="(max-width: 768px) 100vw,
-					(max-width: 1200px) 50vw,
-					33vw"
 						priority
 					/>
 				</div>
 			</Link>
-			<span className={styles.projectName}>
-				{name} {year}
-			</span>
-			<span className={styles.projectCategory}>{category}</span>
 		</div>
 	);
 };
 
 const Projects = ({ projects }) => {
-	const gallery = projects.map((props, idx) => (
-		<Project key={`gallery-project-${props.name}-${idx}`} {...props} />
+	const pattern = [2, 3, 2];
+
+	// Create an array of arrays, where each subarray represents a row of images
+	const imageRows = [];
+	let patternIndex = 0;
+	let currentRow = [];
+
+	for (let i = 0; i < projects.length; i++) {
+		currentRow.push(projects[i]);
+		if (currentRow.length === pattern[patternIndex]) {
+			imageRows.push(currentRow);
+			currentRow = [];
+			patternIndex = (patternIndex + 1) % pattern.length;
+		}
+	}
+
+	// If there are any leftover images, add them to the rows
+	if (currentRow.length > 0) {
+		imageRows.push(currentRow);
+	}
+	// console.log(imageRows);
+
+	const gallery = imageRows.map((imageRow, rowIndex) => (
+		<div
+			key={rowIndex}
+			className={
+				rowIndex % 3 === 0
+					? styles.twoElementsRow
+					: rowIndex % 3 === 1
+					? styles.threeElementsRow
+					: styles.twoElementsReverseRow
+			}
+		>
+			{imageRow.map((image, idx) => (
+				<Project
+					key={`gallery-project-${image.name}-${idx}`}
+					{...image}
+				/>
+			))}
+		</div>
 	));
+
+	// const gallery = projects.map((props, idx) => (
+	// 	<Project key={`gallery-project-${props.name}-${idx}`} {...props} />
+	// ));
 
 	return (
 		<AnimationLayout>
 			<ScrollProgress />
 			<div className={styles.wrapper}>
-				<Menu />
+				<Menu type="light" sectionName="Portfolio" />
 				<PageLayout>
-					<header>
-						<h1>Projects</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. Nisi eos est dolorem ab sed. Vero ratione quia
-							obcaecati doloremque earum rerum fugiat, nihil
-							praesentium! Quidem laborum non laboriosam neque
-							velit illo accusantium cumque nisi modi, aliquam
-							vero rerum, nemo a.
-						</p>
-					</header>
 					<section className={styles.gallery}>{gallery}</section>
+					<Footer />
 				</PageLayout>
 			</div>
 		</AnimationLayout>

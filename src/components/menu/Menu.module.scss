@@ -8,6 +8,7 @@
 	justify-content: space-between;
 	align-items: center;
 	grid-column: full;
+	position: relative;
 
 	.logo {
 		position: absolute;
@@ -26,6 +27,18 @@
 		@media (max-width: 600px) {
 			left: 1rem;
 		}
+	}
+
+	.lightLogo {
+		color: var(--color-white);
+	}
+
+	.sectionName {
+		position: relative;
+		left: 50%;
+		bottom: -4rem;
+		transform: translateX(-50%);
+		color: var(--color-white);
 	}
 
 	button {
@@ -109,6 +122,20 @@
 		text-transform: lowercase;
 		pointer-events: none;
 		transition: transform 0.1s linear;
+	}
+}
+
+.menuSectionLight {
+	background-color: var(--color-white);
+
+	/* stylelint-disable-next-line no-descending-specificity */
+	.cursor {
+		background-color: var(--color-main-red);
+		mix-blend-mode: darken;
+	}
+
+	.menuSpan {
+		color: var(--color-main-dark);
 	}
 }
 
