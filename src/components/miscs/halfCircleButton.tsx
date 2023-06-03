@@ -8,10 +8,17 @@ import styles from './halfCircleButton.module.scss';
 interface IHalfCircleButton {
 	icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 	text?: string;
-	size: string;
+	size?: string;
 	direction: string;
-	top: string;
+	top?: string;
 	onClick: () => void;
+}
+
+declare module 'react' {
+	interface CSSProperties {
+		'--width'?: string;
+		'--top'?: string;
+	}
 }
 
 const HalfCircleButton: React.FC<IHalfCircleButton> = ({

@@ -52,7 +52,9 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 		const link = document.querySelectorAll(
 			`nav > .${styles.mainMenuLinks}`
 		);
-		const cursor = document.querySelector(`.${styles.cursor}`);
+		const cursor = document.querySelector(
+			`.${styles.cursor}`
+		) as HTMLElement;
 
 		const animate = function (e) {
 			const span = this.querySelector('span');

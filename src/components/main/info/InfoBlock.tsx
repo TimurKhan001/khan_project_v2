@@ -18,7 +18,7 @@ const InfoBlock: React.FC<IInfoBlock> = ({ heading, text, buttonText }) => {
 			{!isMobile && (
 				<HalfCircleButton
 					text={buttonText}
-					width="50vw"
+					size="50vw"
 					direction="right"
 					onClick={() => {}}
 				/>
