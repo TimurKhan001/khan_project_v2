@@ -2,6 +2,10 @@
 	grid-column: feature;
 	margin: var(--standart-sections-margin);
 
+	a {
+		text-decoration: none;
+	}
+
 	.images {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;

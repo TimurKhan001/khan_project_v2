@@ -9,15 +9,18 @@ interface IContact {
 	Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 	text: string;
 	contact: string;
+	id: string;
 }
 
-const Contact: React.FC<IContact> = ({ Icon, text, contact }) => {
+const Contact: React.FC<IContact> = ({ Icon, text, contact, id }) => {
+	const href = id === 'email' ? `mailto:${contact}` : `tel:${contact}`;
+
 	return (
-		<div className={styles.contact}>
+		<a href={href} className={styles.contact}>
 			<Icon />
 			<p> - {text}</p>
 			<p>{contact}</p>
-		</div>
+		</a>
 	);
 };
 
@@ -30,20 +33,20 @@ const ContactSection: React.FC<IContacts> = ({ heading, text }) => {
 	const intl = useIntl();
 
 	const contacts = getContacts(intl).map(({ id, ...rest }) => (
-		<Contact key={id} {...rest} />
+		<Contact key={id} id={id} {...rest} />
 	));
 
 	return (
 		<section className={styles.wrapper}>
 			<TextSection heading={heading} text={text} isLargeText={true} />
 			<div className={styles.contacts}>{contacts}</div>
-			<div className={styles.button}>
+			{/* <div className={styles.button}>
 				<RoundButton
 					handleClick={() => {}}
 					Icon={FormIcon}
 					isAlwaysVisibleIcon={true}
 				/>
-			</div>
+			</div> */}
 		</section>
 	);
 };

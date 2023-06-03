@@ -14,6 +14,10 @@ const SMBlock: React.FC<ISMBlock> = ({ heading, text }) => {
 	const isMobile = useIsMobile(900);
 	const buttonSize = isMobile ? '25vw' : '15vw';
 
+	const handleClick = () => {
+		window.location.href = 'https://www.instagram.com/khanproject_prague/';
+	};
+
 	return (
 		<section className={styles.wrapper}>
 			<article>
@@ -26,7 +30,7 @@ const SMBlock: React.FC<ISMBlock> = ({ heading, text }) => {
 					size={`min(${buttonSize}, 30rem)`}
 					top="2.5vw"
 					direction="left"
-					onClick={() => {}}
+					onClick={handleClick}
 				/>
 				<div className={styles.image}>
 					<Image src={image} alt={`instagram`} fill={true} />

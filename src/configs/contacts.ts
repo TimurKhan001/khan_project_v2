@@ -11,13 +11,13 @@ export interface IContact {
 
 const getContacts = (intl: IntlShape): IContact[] => [
 	{
-		id: 'contact1',
+		id: 'email',
 		text: intl.formatMessage({ id: 'contactMailUs' }),
 		contact: 'khanproject@mail.com',
 		Icon: Envelope,
 	},
 	{
-		id: 'contact2',
+		id: 'phone',
 		text: intl.formatMessage({ id: 'contactPhoneUs' }),
 		contact: '+420 123 456 789',
 		Icon: Phone,
