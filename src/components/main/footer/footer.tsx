@@ -1,15 +1,15 @@
-import Link from 'next/link';
 import ThreeDots from '../../miscs/threeDots/threeDots';
 import InstaLogo from '../../../../public/icons/instagram-logo-fill.svg';
 import LinkedInLogo from '../../../../public/icons/linkedin-logo-fill.svg';
 import BehanceLogo from '../../../../public/icons/behance-logo-fill.svg';
+import NoScrollLink from '../../miscs/noScrollLink/noScrollLink';
 import styles from './footer.module.scss';
 
 const Footer = () => {
 	return (
 		<footer className={styles.wrapper}>
 			<div className={styles.roundTop}>
-				<ThreeDots color="white" />
+				<ThreeDots color="white" isAlwaysVisible={true} />
 			</div>
 			<div className={styles.content}>
 				<div className={styles.columns}>
@@ -24,18 +24,18 @@ const Footer = () => {
 					</div>
 					<div className={styles.column}>
 						<p>quick links:</p>
-						<Link href="/">
+						<NoScrollLink href="/">
 							<span>home</span>
-						</Link>
-						<Link href="/projects">
+						</NoScrollLink>
+						<NoScrollLink href="/projects">
 							<span>portfolio</span>
-						</Link>
-						<Link href="/services">
+						</NoScrollLink>
+						<NoScrollLink href="/services">
 							<span>services</span>
-						</Link>
-						<Link href="/about">
+						</NoScrollLink>
+						<NoScrollLink href="/about">
 							<span>about</span>
-						</Link>
+						</NoScrollLink>
 					</div>
 					<div className={styles.column}>
 						<p>connect with us:</p>

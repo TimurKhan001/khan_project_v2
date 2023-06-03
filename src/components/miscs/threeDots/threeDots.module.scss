@@ -28,3 +28,10 @@
 		background-color: var(--color-white);
 	}
 }
+
+.isAlwaysVisible {
+	@media (max-width: 900px) {
+		display: flex;
+		gap: 1rem;
+	}
+}

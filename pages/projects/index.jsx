@@ -2,12 +2,14 @@
 import Image from 'next/image';
 import PageLayout from '../../src/components/layouts/pageLayout';
 import Menu from '../../src/components/menu/Menu';
-import Link from 'next/link';
 import AnimationLayout from '../../src/components/layouts/animationLayout';
 import clsx from 'clsx';
 import ScrollProgress from '../../src/components/scrollProgress/scrollProgress';
 import Footer from '../../src/components/main/footer/footer';
+import { useContext } from 'react';
+import LanguageContext from '../../src/contexts/languageContext';
 import styles from './index.module.scss';
+import NoScrollLink from '../../src/components/miscs/noScrollLink/noScrollLink';
 
 // This function gets called at build time
 export async function getStaticProps() {
@@ -24,34 +26,30 @@ export async function getStaticProps() {
 	};
 }
 
-const Project = ({ _id, name, year, mainPicture, category, orientation }) => {
-	const isVertical = orientation === 'vertical';
-
+const Project = ({ _id, name, mainPicture, locale }) => {
 	return (
-		<div
-			className={clsx(
-				styles.project,
-				isVertical && styles.verticalProject
-			)}
-		>
-			<Link href={`/projects/${_id}`}>
+		<div className={clsx(styles.project)}>
+			<NoScrollLink href={`/projects/${_id}`} scroll={false}>
 				<div className={styles.projectImage}>
 					<Image
 						src={mainPicture}
-						alt={`${name}-project`}
+						alt={`${name[locale]}-project`}
 						fill={true}
-						priority
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						priority={true}
 					/>
+					<h4 className={styles.projectName}>{name[locale]}</h4>
 				</div>
-			</Link>
+			</NoScrollLink>
 		</div>
 	);
 };
 
 const Projects = ({ projects }) => {
-	const pattern = [2, 3, 2];
+	const { locale } = useContext(LanguageContext);
 
-	// Create an array of arrays, where each subarray represents a row of images
+	const pattern = [2, 3, 2, 3];
+
 	const imageRows = [];
 	let patternIndex = 0;
 	let currentRow = [];
@@ -65,35 +63,32 @@ const Projects = ({ projects }) => {
 		}
 	}
 
-	// If there are any leftover images, add them to the rows
 	if (currentRow.length > 0) {
 		imageRows.push(currentRow);
 	}
-	// console.log(imageRows);
 
 	const gallery = imageRows.map((imageRow, rowIndex) => (
 		<div
 			key={rowIndex}
-			className={
-				rowIndex % 3 === 0
-					? styles.twoElementsRow
-					: rowIndex % 3 === 1
-					? styles.threeElementsRow
-					: styles.twoElementsReverseRow
-			}
+			className={clsx(
+				imageRow.length === 3 && styles.threeElementsRow,
+				imageRow.length === 2 &&
+					rowIndex % 4 !== 2 &&
+					styles.twoElementsRow,
+				imageRow.length === 2 &&
+					rowIndex % 4 === 2 &&
+					styles.twoElementsReverseRow
+			)}
 		>
 			{imageRow.map((image, idx) => (
 				<Project
 					key={`gallery-project-${image.name}-${idx}`}
+					locale={locale}
 					{...image}
 				/>
 			))}
 		</div>
 	));
-
-	// const gallery = projects.map((props, idx) => (
-	// 	<Project key={`gallery-project-${props.name}-${idx}`} {...props} />
-	// ));
 
 	return (
 		<AnimationLayout>

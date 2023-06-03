@@ -41,6 +41,12 @@ export default function MyApp({ Component, pageProps, router }) {
 	}, []);
 
 	useEffect(() => {
+		if ('scrollRestoration' in window.history) {
+			window.history.scrollRestoration = 'manual';
+		}
+	}, []);
+
+	useEffect(() => {
 		if (locale && localeMessages[locale]) {
 			setMessages(localeMessages[locale]);
 			localStorage.setItem('locale', locale);
@@ -50,8 +56,12 @@ export default function MyApp({ Component, pageProps, router }) {
 	return (
 		<LanguageContext.Provider value={{ locale, setLocale }}>
 			<IntlProvider locale={locale} messages={messages}>
-				<AnimatePresence mode="wait" initial={false}>
-					<Component {...pageProps} key={router.pathname} />
+				<AnimatePresence
+					mode="wait"
+					initial={false}
+					onExitComplete={() => window.scrollTo(0, 0)}
+				>
+					<Component {...pageProps} key={router.asPath} />
 				</AnimatePresence>
 			</IntlProvider>
 		</LanguageContext.Provider>

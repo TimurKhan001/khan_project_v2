@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react';
-import Link from 'next/link';
 import { motion, useCycle } from 'framer-motion';
 import useIsMobile from '../../helpers/useIsMobile';
 import LanguageSwitcher from '../miscs/languageSwitch/languageSwitch';
+import NoScrollLink from '../miscs/noScrollLink/noScrollLink';
 import clsx from 'clsx';
 import styles from './Menu.module.scss';
 
@@ -91,7 +91,7 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 	return (
 		<>
 			<div className={styles.wrapper}>
-				<Link
+				<NoScrollLink
 					href="/"
 					className={clsx(
 						styles.logo,
@@ -99,7 +99,7 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 					)}
 				>
 					khan.project
-				</Link>
+				</NoScrollLink>
 				{sectionName && (
 					<h3 className={styles.sectionName}>{sectionName}</h3>
 				)}
@@ -126,18 +126,28 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 				)}
 			>
 				<nav className={styles.mainNav}>
-					<Link className={styles.mainMenuLinks} href="/projects">
+					<NoScrollLink
+						className={styles.mainMenuLinks}
+						href="/projects"
+						scroll={false}
+					>
 						<span className={styles.menuSpan}>Projects</span>
 						<span className={styles.number}>01</span>
-					</Link>
-					<Link className={styles.mainMenuLinks} href="/project">
+					</NoScrollLink>
+					<NoScrollLink
+						className={styles.mainMenuLinks}
+						href="/project"
+					>
 						<span className={styles.menuSpan}>Process</span>
 						<span className={styles.number}>02</span>
-					</Link>
-					<Link className={styles.mainMenuLinks} href="/project">
+					</NoScrollLink>
+					<NoScrollLink
+						className={styles.mainMenuLinks}
+						href="/project"
+					>
 						<span className={styles.menuSpan}>Contact</span>
 						<span className={styles.number}>03</span>
-					</Link>
+					</NoScrollLink>
 					<div className={styles.cursor}></div>
 					<LanguageSwitcher />
 				</nav>

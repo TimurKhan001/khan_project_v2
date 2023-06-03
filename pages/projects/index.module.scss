@@ -1,10 +1,8 @@
 .wrapper {
-	min-height: 100vh;
-	min-height: 100dvh;
 	background-color: var(--color-main-dark);
 
 	.gallery {
-		grid-column: feature;
+		grid-column: popout;
 		margin: var(--standart-sections-margin);
 		display: grid;
 		grid-template-columns: 1fr;
@@ -14,23 +12,23 @@
 		.twoElementsReverseRow {
 			display: grid;
 			justify-content: space-between;
-			gap: 5rem;
-			margin: 5rem 0;
+			gap: min(5rem, 5vw);
+			margin: min(5rem, 3vw) 0;
 		}
 
 		.twoElementsRow {
 			grid-template-columns: 65% 30%;
-			grid-template-rows: 25vw;
+			aspect-ratio: 16 / 6;
 		}
 
 		.threeElementsRow {
 			grid-template-columns: 35% 20% 35%;
-			grid-template-rows: 15vw;
+			aspect-ratio: 16 / 4;
 		}
 
 		.twoElementsReverseRow {
-			grid-template-columns: 35% 65%;
-			grid-template-rows: 25vw;
+			grid-template-columns: 30% 65%;
+			aspect-ratio: 16 / 6;
 		}
 
 		span {
@@ -45,10 +43,6 @@
 			position: relative;
 		}
 
-		.verticalProject {
-			position: relative;
-		}
-
 		.projectImage {
 			width: 100%;
 			height: 100%;
@@ -60,34 +54,74 @@
 			filter: saturate(50%);
 			transition: all 0.5s ease;
 
+			h4 {
+				padding: 1rem;
+				width: 90%;
+				text-align: center;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				color: var(--color-white);
+				opacity: 0;
+				transition: all 0.5s ease;
+				background: rgb(0 0 0 / 60%);
+				border-radius: 10px;
+				font-size: clamp(1.6rem, 2vw, 3rem);
+				line-height: 1.5;
+
+				@media (max-width: 900px) {
+					opacity: 1;
+				}
+			}
+
 			&:hover {
 				transform: scale(1.05);
-				filter: grayscale(100%);
+			}
+
+			&:hover > h4 {
+				opacity: 1;
 			}
 
 			img {
 				object-fit: cover;
 				border-radius: 60px;
+
+				@media (max-width: 1200px) {
+					border-radius: 35px;
+				}
 			}
 		}
 
-		// .projectCategory {
-		// 	position: absolute;
-		// 	top: 0;
-		// 	right: -2.5rem;
-		// 	writing-mode: vertical-rl;
-		// 	text-orientation: upright;
-		// }
+		@media (max-width: 800px) {
+			.twoElementsRow,
+			.threeElementsRow,
+			.twoElementsReverseRow {
+				display: flex;
+				flex-flow: row wrap;
+				aspect-ratio: unset;
+				justify-content: center;
+			}
 
-		@media (max-width: 900px) {
 			.project {
-				width: calc(50% - var(--gap));
+				width: 45%;
+				height: 30vw;
 			}
 		}
 
 		@media (max-width: 600px) {
+			margin-top: 5rem;
+
+			.twoElementsRow,
+			.threeElementsRow,
+			.twoElementsReverseRow {
+				grid-template-columns: 1fr;
+			}
+
 			.project {
 				width: 100%;
+				height: 60vw;
+				margin: 1.5rem 0;
 			}
 		}
 	}

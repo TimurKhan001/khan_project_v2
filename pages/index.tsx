@@ -32,7 +32,7 @@ const HomePage = () => {
 				<link rel="icon" href="/favicon.ico" />
 
 				{/* Add hreflang links */}
-				<link
+				{/* <link
 					rel="alternate"
 					href="http://example.com"
 					hrefLang="x-default"
@@ -52,7 +52,7 @@ const HomePage = () => {
 					rel="alternate"
 					href="http://example.com/nl-NL"
 					hrefLang="nl-NL"
-				/>
+				/> */}
 			</Head>
 			<ScrollProgress />
 			<div className={styles.wrapper}>

@@ -14,7 +14,7 @@
 		position: absolute;
 		left: min(2.5vw, 50px);
 		color: var(--color-main-dark);
-		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-size: clamp(1.8rem, 4vw, 4rem);
 		font-weight: 600;
 		text-decoration: none;
 		z-index: 1;
@@ -39,6 +39,10 @@
 		bottom: -4rem;
 		transform: translateX(-50%);
 		color: var(--color-white);
+
+		@media (max-width: 900px) {
+			bottom: -6rem;
+		}
 	}
 
 	button {
