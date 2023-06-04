@@ -14,7 +14,7 @@ import styles from './id.module.scss';
 // This function gets called at build time
 export async function getStaticPaths() {
 	// Call an external API endpoint to get posts
-	const res = await fetch('http://localhost:8000/projects');
+	const res = await fetch(`${process.env.BACKEND_API_ENDPOINT}/projects`);
 	const projects = await res.json();
 
 	// Get the paths we want to pre-render based on posts
@@ -29,7 +29,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 	// Call an external API endpoint to get posts
-	const res = await fetch(`http://localhost:8000/projects/${params.id}`);
+	const res = await fetch(
+		`${process.env.BACKEND_API_ENDPOINT}/projects/${params.id}`
+	);
 	const projectData = await res.json();
 
 	// By returning { props: { projectData } }, the ProjectDetails component
