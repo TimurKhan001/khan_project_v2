@@ -7,8 +7,8 @@ import { IntlProvider } from 'react-intl';
 import enData from '../public/locales/en.json';
 import csData from '../public/locales/cs.json';
 import LanguageContext from '../src/contexts/languageContext';
-
 import { AnimatePresence } from 'framer-motion';
+import { useNextCssRemovalPrevention } from '@madeinhaus/nextjs-page-transition';
 
 const localeMessages = {
 	en: enData,
@@ -16,6 +16,8 @@ const localeMessages = {
 };
 
 export default function MyApp({ Component, pageProps, router }) {
+	useNextCssRemovalPrevention();
+
 	const [locale, setLocale] = useState('en');
 
 	const [messages, setMessages] = useState(localeMessages[locale]);

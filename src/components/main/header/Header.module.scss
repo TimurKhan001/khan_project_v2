@@ -1,5 +1,5 @@
 .heroSection {
-	grid-column: feature-start / full-end;
+	grid-column: feature-start / full-end !important;
 	display: grid;
 	grid-template-columns: 1fr 50vw;
 	gap: 5rem;

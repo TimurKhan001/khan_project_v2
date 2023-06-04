@@ -2,7 +2,7 @@
 	background-color: var(--color-main-dark);
 
 	.gallery {
-		grid-column: popout;
+		grid-column: popout !important;
 		margin: var(--standart-sections-margin);
 		display: grid;
 		grid-template-columns: 1fr;

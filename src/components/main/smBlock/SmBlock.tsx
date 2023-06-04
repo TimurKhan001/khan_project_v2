@@ -24,7 +24,10 @@ const SMBlock: React.FC<ISMBlock> = ({ heading, text }) => {
 				<h3>{heading}</h3>
 				<p>{text}</p>
 			</article>
-			<div className={styles.imageSection}>
+			<a
+				href="https://www.instagram.com/khanproject_prague/"
+				className={styles.imageSection}
+			>
 				<HalfCircleButton
 					icon={ThumbUp}
 					size={`min(${buttonSize}, 30rem)`}
@@ -33,9 +36,14 @@ const SMBlock: React.FC<ISMBlock> = ({ heading, text }) => {
 					onClick={handleClick}
 				/>
 				<div className={styles.image}>
-					<Image src={image} alt={`instagram`} fill={true} />
+					<Image
+						src={image}
+						alt={`instagram`}
+						fill={true}
+						sizes="(max-width: 768px) 80vw, (max-width: 1200px) 60vw, (max-width: 1600px) 50vw, 40vw"
+					/>
 				</div>
-			</div>
+			</a>
 		</section>
 	);
 };

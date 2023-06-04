@@ -15,6 +15,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@madeinhaus/nextjs-page-transition": "^2.0.1",
 		"clsx": "^1.2.1",
 		"framer-motion": "^10.12.8",
 		"next": "^13.4.3",
