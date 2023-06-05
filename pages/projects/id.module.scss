@@ -1,6 +1,5 @@
 .wrapper {
 	width: 100vw;
-	// height: fit-content;
 	background: var(--color-main-dark);
 
 	.absoluteMenu {
@@ -44,7 +43,7 @@
 	.projectInfo {
 		color: var(--color-white);
 		background: var(--color-main-dark);
-		height: 10dvh;
+		height: 10svh;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
