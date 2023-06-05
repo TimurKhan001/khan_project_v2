@@ -32,7 +32,7 @@
 }
 
 .heroSectionMobile {
-	grid-column: full;
+	grid-column: full !important;
 	margin-bottom: min(15vw, 15rem);
 
 	.redWrapper {
