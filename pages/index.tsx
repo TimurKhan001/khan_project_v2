@@ -29,6 +29,10 @@ const HomePage = () => {
 					name="description"
 					content="Discover the visionary architectural designs by Nargiza Khananova, the architect with over 15 years of experience, based in the Austrian Alps. Specializing in sustainable and modern architecture. Explore her extensive portfolio and transformative approach to design."
 				/>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1"
+				/>
 				<link rel="icon" href="/favicon.ico" />
 
 				{/* Add hreflang links */}
