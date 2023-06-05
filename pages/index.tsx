@@ -14,12 +14,17 @@ import Head from 'next/head';
 import ContactSection from '../src/components/main/contacts/contactsSection';
 import useFormatMessage from '../src/helpers/useFormatMessage';
 import Footer from '../src/components/main/footer/footer';
+import { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const HomePage = () => {
 	const isMobile = useIsMobile(900);
 
 	const getTranslation = useFormatMessage();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<AnimationLayout>

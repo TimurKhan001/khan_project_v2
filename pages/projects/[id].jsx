@@ -4,7 +4,7 @@ import Menu from '../../src/components/menu/Menu';
 import Image from 'next/image';
 import clsx from 'clsx';
 import ArrowLeft from '../../public/icons/arrow_left.svg';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import LanguageContext from '../../src/contexts/languageContext';
 import NoScrollLink from '../../src/components/miscs/noScrollLink/noScrollLink';
 import ScrollProgress from '../../src/components/scrollProgress/scrollProgress';
@@ -76,6 +76,10 @@ const ProjectDetails = ({ projectData }) => {
 			idx={idx}
 		/>
 	));
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<AnimationLayout>

@@ -6,7 +6,7 @@ import AnimationLayout from '../../src/components/layouts/animationLayout';
 import clsx from 'clsx';
 import ScrollProgress from '../../src/components/scrollProgress/scrollProgress';
 import Footer from '../../src/components/main/footer/footer';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import LanguageContext from '../../src/contexts/languageContext';
 import styles from './index.module.scss';
 import NoScrollLink from '../../src/components/miscs/noScrollLink/noScrollLink';
@@ -89,6 +89,10 @@ const Projects = ({ projects }) => {
 			))}
 		</div>
 	));
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<AnimationLayout>
