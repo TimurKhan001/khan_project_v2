@@ -27,6 +27,7 @@ const SmallGallery = () => {
 							<Image
 								src={image}
 								alt={`gallery-small-image-${idx}`}
+								sizes="(max-width: 768px) 40vw, 35vw"
 								fill={true}
 							/>
 						</motion.div>
