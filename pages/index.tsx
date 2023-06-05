@@ -24,39 +24,11 @@ const HomePage = () => {
 	return (
 		<AnimationLayout>
 			<Head>
-				<title>khan.project architect EU</title>
+				<title>khan.project architect EU | Main</title>
 				<meta
 					name="description"
 					content="Discover the visionary architectural designs by Nargiza Khananova, the architect with over 15 years of experience, based in the Austrian Alps. Specializing in sustainable and modern architecture. Explore her extensive portfolio and transformative approach to design."
 				/>
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1"
-				/>
-				<link rel="icon" href="/favicon.ico" />
-
-				{/* Add hreflang links */}
-				{/* <link
-					rel="alternate"
-					href="http://example.com"
-					hrefLang="x-default"
-				/>
-				<link rel="alternate" href="http://example.com" hrefLang="en" />
-				<link
-					rel="alternate"
-					href="http://example.com/ar"
-					hrefLang="ar"
-				/>
-				<link
-					rel="alternate"
-					href="http://example.com/fr"
-					hrefLang="fr"
-				/>
-				<link
-					rel="alternate"
-					href="http://example.com/nl-NL"
-					hrefLang="nl-NL"
-				/> */}
 			</Head>
 			<ScrollProgress />
 			<div className={styles.wrapper}>

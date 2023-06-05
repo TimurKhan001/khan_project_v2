@@ -58,12 +58,19 @@
 	button::before {
 		content: '';
 		position: absolute;
-		width: 70px;
-		height: 70px;
+		width: 7rem;
+		height: 7rem;
 		background-color: var(--color-main-dark);
 		border-radius: 50%;
 		top: -22px;
 		left: -9px;
+
+		@media (max-width: 600px) {
+			width: 6rem;
+			height: 6rem;
+			top: -17px;
+			left: -5px;
+		}
 	}
 
 	@media (max-width: 600px) {
@@ -126,6 +133,10 @@
 		text-transform: lowercase;
 		pointer-events: none;
 		transition: transform 0.1s linear;
+
+		@media (max-width: 900px) {
+			font-size: 5.4rem;
+		}
 	}
 }
 

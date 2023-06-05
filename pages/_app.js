@@ -9,6 +9,7 @@ import csData from '../public/locales/cs.json';
 import LanguageContext from '../src/contexts/languageContext';
 import { AnimatePresence } from 'framer-motion';
 import { useNextCssRemovalPrevention } from '@madeinhaus/nextjs-page-transition';
+import Head from 'next/head';
 
 const localeMessages = {
 	en: enData,
@@ -63,6 +64,37 @@ export default function MyApp({ Component, pageProps, router }) {
 					initial={false}
 					onExitComplete={() => window.scrollTo(0, 0)}
 				>
+					<Head>
+						<title>khan.project architect EU</title>
+						<meta
+							name="description"
+							content="Discover the visionary architectural designs by Nargiza Khananova, the architect with over 15 years of experience, based in the Austrian Alps. Specializing in sustainable and modern architecture. Explore her extensive portfolio and transformative approach to design."
+						/>
+						<meta
+							name="viewport"
+							content="width=device-width, initial-scale=1"
+						/>
+						<meta charset="utf-8" />
+
+						<link
+							rel="apple-touch-icon"
+							sizes="180x180"
+							href="/apple-touch-icon.png"
+						/>
+						<link
+							rel="icon"
+							type="image/png"
+							sizes="32x32"
+							href="/favicon-32x32.png"
+						/>
+						<link
+							rel="icon"
+							type="image/png"
+							sizes="16x16"
+							href="/favicon-16x16.png"
+						/>
+						<link rel="manifest" href="/site.webmanifest" />
+					</Head>
 					<Component {...pageProps} key={router.asPath} />
 				</AnimatePresence>
 			</IntlProvider>
