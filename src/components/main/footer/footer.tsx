@@ -41,15 +41,21 @@ const Footer = () => {
 						<p>connect with us:</p>
 						<div className={styles.social}>
 							<InstaLogo />
-							<a href="">Instagram</a>
+							<a href="https://www.instagram.com/khanproject_prague/">
+								Instagram
+							</a>
 						</div>
 						<div className={styles.social}>
 							<LinkedInLogo />
-							<a href="">LinkedIn</a>
+							<a href="https://www.linkedin.com/in/nargiza-khananova-015bb4231">
+								LinkedIn
+							</a>
 						</div>
 						<div className={styles.social}>
 							<BehanceLogo />
-							<a href="">BeHance</a>
+							<a href="https://www.behance.net/nargizakhanano">
+								BeHance
+							</a>
 						</div>
 					</div>
 				</div>
