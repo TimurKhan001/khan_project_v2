@@ -35,7 +35,7 @@ const Project = ({ _id, name, mainPicture, locale, shouldPrioritize }) => {
 						src={mainPicture}
 						alt={`${name[locale]}-project`}
 						fill={true}
-						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
 						priority={shouldPrioritize ? true : false}
 					/>
 					<h4 className={styles.projectName}>{name[locale]}</h4>
