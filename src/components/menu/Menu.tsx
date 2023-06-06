@@ -99,6 +99,7 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 						styles.logo,
 						type === 'light' && styles.lightLogo
 					)}
+					aria-label="Home"
 				>
 					khan.project
 				</NoScrollLink>
@@ -132,22 +133,25 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 						className={styles.mainMenuLinks}
 						href="/projects"
 						scroll={false}
+						aria-label="Navigate to Projects"
 					>
 						<span className={styles.menuSpan}>Projects</span>
 						<span className={styles.number}>01</span>
 					</NoScrollLink>
 					<NoScrollLink
 						className={styles.mainMenuLinks}
-						href="/project"
+						href="/services"
+						aria-label="Navigate to Services"
 					>
-						<span className={styles.menuSpan}>Process</span>
+						<span className={styles.menuSpan}>Services</span>
 						<span className={styles.number}>02</span>
 					</NoScrollLink>
 					<NoScrollLink
 						className={styles.mainMenuLinks}
-						href="/project"
+						href="/about"
+						aria-label="Navigate to About"
 					>
-						<span className={styles.menuSpan}>Contact</span>
+						<span className={styles.menuSpan}>About</span>
 						<span className={styles.number}>03</span>
 					</NoScrollLink>
 					<div className={styles.cursor}></div>

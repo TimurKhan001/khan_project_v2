@@ -36,7 +36,7 @@ const HomePage = () => {
 				/>
 			</Head>
 			<ScrollProgress />
-			<div className={styles.wrapper}>
+			<div className={styles.wrapper} role="main">
 				<Menu />
 				<PageLayout>
 					<Header heading={getTranslation('heading')} />

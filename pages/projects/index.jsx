@@ -12,7 +12,7 @@ import styles from './index.module.scss';
 import NoScrollLink from '../../src/components/miscs/noScrollLink/noScrollLink';
 
 // This function gets called at build time
-export async function getServerSideProps() {
+export async function getStaticProps() {
 	// Call an external API endpoint to get posts
 	const res = await fetch(`${process.env.BACKEND_API_ENDPOINT}/projects`);
 	const projects = await res.json();
@@ -26,7 +26,7 @@ export async function getServerSideProps() {
 	};
 }
 
-const Project = ({ _id, name, mainPicture, locale }) => {
+const Project = ({ _id, name, mainPicture, locale, shouldPrioritize }) => {
 	return (
 		<div className={clsx(styles.project)}>
 			<NoScrollLink href={`/projects/${_id}`} scroll={false}>
@@ -36,7 +36,7 @@ const Project = ({ _id, name, mainPicture, locale }) => {
 						alt={`${name[locale]}-project`}
 						fill={true}
 						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-						priority={true}
+						priority={shouldPrioritize ? true : false}
 					/>
 					<h4 className={styles.projectName}>{name[locale]}</h4>
 				</div>
@@ -85,6 +85,7 @@ const Projects = ({ projects }) => {
 					key={`gallery-project-${image.name}-${idx}`}
 					locale={locale}
 					{...image}
+					shouldPrioritize={idx < 2}
 				/>
 			))}
 		</div>
