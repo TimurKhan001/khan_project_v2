@@ -112,6 +112,15 @@
 				width: 80%;
 				place-self: center;
 			}
+
+			@media (max-width: 600px) {
+				&:nth-child(even),
+				&:nth-child(odd),
+				&:nth-child(4n + 2),
+				&:first-child {
+					width: 100%;
+				}
+			}
 		}
 	}
 }
