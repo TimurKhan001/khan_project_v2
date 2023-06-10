@@ -6,9 +6,9 @@ import NoScrollLink from '../../miscs/noScrollLink/noScrollLink';
 import styles from './SmallGallery.module.scss';
 
 const images = [
-	'/images/portfolio1.jpeg',
-	'/images/portfolio2.jpeg',
-	'/images/portfolio3.jpeg',
+	'/images/portfolio1.webp',
+	'/images/portfolio2.webp',
+	'/images/portfolio3.webp',
 ];
 
 const SmallGallery = () => {

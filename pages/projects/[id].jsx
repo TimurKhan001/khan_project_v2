@@ -11,31 +11,23 @@ import ScrollProgress from '../../src/components/scrollProgress/scrollProgress';
 import Footer from '../../src/components/main/footer/footer';
 import styles from './id.module.scss';
 
-// This function gets called at build time
 export async function getStaticPaths() {
-	// Call an external API endpoint to get posts
 	const res = await fetch(`${process.env.BACKEND_API_ENDPOINT}/projects`);
 	const projects = await res.json();
 
-	// Get the paths we want to pre-render based on posts
 	const paths = projects.map((project) => ({
 		params: { id: project._id },
 	}));
 
-	// We'll pre-render only these paths at build time.
-	// { fallback: false } means other routes should 404.
 	return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-	// Call an external API endpoint to get posts
 	const res = await fetch(
 		`${process.env.BACKEND_API_ENDPOINT}/projects/${params.id}`
 	);
 	const projectData = await res.json();
 
-	// By returning { props: { projectData } }, the ProjectDetails component
-	// will receive `projectData` as a prop at build time
 	return {
 		props: {
 			projectData,

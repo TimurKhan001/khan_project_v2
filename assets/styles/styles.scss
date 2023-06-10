@@ -114,16 +114,6 @@ br {
 	}
 }
 
-.swiper-button-next {
-	@media (max-width: 900px) {
-		right: 0 !important;
-	}
-
-	@media (max-width: 600px) {
-		right: 5px !important;
-	}
-}
-
 .swiper-button-prev {
 	@media (max-width: 900px) {
 		left: 0 !important;

@@ -27,7 +27,7 @@ const InfoBlock: React.FC<IInfoBlock> = ({ heading, text, buttonText }) => {
 				<p>{text}</p>
 				<div className={styles.headerImage}>
 					<Image
-						src="/images/header_image.png"
+						src="/images/header_image.webp"
 						alt={'header-image'}
 						fill={true}
 						priority={true}

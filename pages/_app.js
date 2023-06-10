@@ -41,6 +41,7 @@ export default function MyApp({ Component, pageProps, router }) {
 			setLocale(browserLang);
 			localStorage.setItem('locale', browserLang);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {

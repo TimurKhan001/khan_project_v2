@@ -36,7 +36,7 @@ const SMBlock: React.FC<ISMBlock> = ({ heading, text }) => {
 				/>
 				<div className={styles.image}>
 					<Image
-						src="/images/insta.jpg"
+						src="/images/insta.webp"
 						alt={`instagram`}
 						fill={true}
 						sizes="(max-width: 768px) 80vw, (max-width: 1200px) 60vw, (max-width: 1600px) 50vw, 40vw"
