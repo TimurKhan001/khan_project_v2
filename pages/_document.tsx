@@ -10,7 +10,7 @@ class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
-					<link
+					{/* <link
 						rel="preload"
 						href="https://khan-project.s3.eu-central-1.amazonaws.com/p1.avif"
 						as="image"
@@ -59,7 +59,7 @@ class MyDocument extends Document {
 						rel="preload"
 						href="https://khan-project.s3.eu-central-1.amazonaws.com/l1.avif"
 						as="image"
-					/>
+					/> */}
 				</Head>
 				<body>
 					<Main />
