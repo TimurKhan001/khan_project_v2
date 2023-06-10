@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import headerImage from '../../../../public/images/header_image.png';
 import useIsMobile from '../../../helpers/useIsMobile';
 import RoundButton from '../../miscs/roundButon';
 import scrollTo from '../../../helpers/animations/scrollTo';
-import ArrowDown from '../../../../public/icons/arrow_down.svg';
+import ArrowDown from '../../../assets/icons/arrow_down.svg';
 import styles from './Header.module.scss';
 
 interface IHeader {
@@ -48,10 +47,11 @@ const Header = ({ heading }: IHeader) => {
 					/>
 					<div className={styles.headerImage}>
 						<Image
-							src={headerImage}
+							src="/images/header_image.png"
 							alt={'header-image'}
 							fill={true}
-							priority
+							priority={true}
+							sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, (max-width: 1600px) 50vw"
 						/>
 						<div className={styles.downButton}>
 							<RoundButton

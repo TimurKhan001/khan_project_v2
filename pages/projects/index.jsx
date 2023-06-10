@@ -11,14 +11,10 @@ import LanguageContext from '../../src/contexts/languageContext';
 import styles from './index.module.scss';
 import NoScrollLink from '../../src/components/miscs/noScrollLink/noScrollLink';
 
-// This function gets called at build time
 export async function getStaticProps() {
-	// Call an external API endpoint to get posts
 	const res = await fetch(`${process.env.BACKEND_API_ENDPOINT}/projects`);
 	const projects = await res.json();
 
-	// By returning { props: { projects } }, the Projects component
-	// will receive `projects` as a prop at build time
 	return {
 		props: {
 			projects,

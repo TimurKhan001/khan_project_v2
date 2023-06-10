@@ -24,5 +24,8 @@
     "contactHeading": "Hire us for your project",
     "contactText": "Contact us in any convenient way to discuss the details.",
     "contactMailUs": "mail us",
-    "contactPhoneUs": "phone us"
+    "contactPhoneUs": "phone us",
+    "menuProjects": "projects",
+    "menuServices": "services",
+    "menuAbout": "about"
 }

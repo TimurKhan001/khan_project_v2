@@ -1,0 +1,29 @@
+.switcher {
+	margin-top: 2.5rem;
+	display: flex;
+	flex-flow: row nowrap;
+
+	button {
+		cursor: pointer;
+		padding: 1rem;
+		background-color: none;
+		border: none;
+
+		&:first-of-type {
+			border-radius: 10px 0 0 10px;
+		}
+
+		&:last-of-type {
+			border-radius: 0 10px 10px 0;
+		}
+	}
+
+	.active {
+		background-color: var(--color-dark-alt);
+		color: var(--color-white);
+	}
+
+	& > * {
+		width: min(15rem, 25vw);
+	}
+}

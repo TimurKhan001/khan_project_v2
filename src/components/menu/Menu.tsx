@@ -1,10 +1,11 @@
-import { useRef, useEffect } from 'react';
-import { motion, useCycle } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import { motion, useAnimate, useCycle } from 'framer-motion';
 import useIsMobile from '../../helpers/useIsMobile';
 import LanguageSwitcher from '../miscs/languageSwitch/languageSwitch';
 import NoScrollLink from '../miscs/noScrollLink/noScrollLink';
 import clsx from 'clsx';
 import styles from './Menu.module.scss';
+import useFormatMessage from '../../helpers/useFormatMessage';
 
 interface IMenu {
 	type?: 'dark' | 'light';
@@ -12,9 +13,34 @@ interface IMenu {
 }
 
 const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
+	const getTranslation = useFormatMessage();
+
 	const isMobile = useIsMobile(600);
 	const [isOpen, toggleOpen] = useCycle(false, true);
 	const burgerRef = useRef(null);
+
+	const [isLanguageChanged, setIsLanguageChange] = useState<boolean>(false);
+
+	const list = {
+		visible: {
+			opacity: 1,
+			transition: {
+				when: 'beforeChildren',
+				staggerChildren: 0.2,
+			},
+		},
+		hidden: {
+			opacity: 0,
+			transition: {
+				when: 'afterChildren',
+			},
+		},
+	};
+
+	const item = {
+		visible: { opacity: 1, x: 0 },
+		hidden: { opacity: 0, x: 200 },
+	};
 
 	const sidebar = {
 		open: (height = 1000) => ({
@@ -128,35 +154,57 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 					type === 'light' && styles.menuSectionLight
 				)}
 			>
-				<nav className={styles.mainNav}>
+				<motion.nav
+					initial="visible"
+					animate={isLanguageChanged ? 'hidden' : 'visible'}
+					variants={list}
+					className={styles.mainNav}
+				>
 					<NoScrollLink
 						className={styles.mainMenuLinks}
 						href="/projects"
 						scroll={false}
 						aria-label="Navigate to Projects"
 					>
-						<span className={styles.menuSpan}>Projects</span>
-						<span className={styles.number}>01</span>
+						<motion.div variants={item}>
+							<span className={styles.menuSpan}>
+								{getTranslation('menuProjects')}
+							</span>
+							<span className={styles.number}>01</span>
+						</motion.div>
 					</NoScrollLink>
+
 					<NoScrollLink
 						className={styles.mainMenuLinks}
 						href="/services"
 						aria-label="Navigate to Services"
 					>
-						<span className={styles.menuSpan}>Services</span>
-						<span className={styles.number}>02</span>
+						<motion.div variants={item}>
+							<span className={styles.menuSpan}>
+								{getTranslation('menuServices')}
+							</span>
+							<span className={styles.number}>02</span>
+						</motion.div>
 					</NoScrollLink>
+
 					<NoScrollLink
 						className={styles.mainMenuLinks}
 						href="/about"
 						aria-label="Navigate to About"
 					>
-						<span className={styles.menuSpan}>About</span>
-						<span className={styles.number}>03</span>
+						<motion.div variants={item}>
+							<span className={styles.menuSpan}>
+								{getTranslation('menuAbout')}
+							</span>
+							<span className={styles.number}>03</span>
+						</motion.div>
 					</NoScrollLink>
+
 					<div className={styles.cursor}></div>
-					<LanguageSwitcher />
-				</nav>
+					<LanguageSwitcher
+						setIsLanguageChange={setIsLanguageChange}
+					/>
+				</motion.nav>
 			</motion.div>
 		</>
 	);

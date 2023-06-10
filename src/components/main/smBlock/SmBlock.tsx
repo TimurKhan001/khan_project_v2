@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styles from './SmBlock.module.scss';
-import image from '../../../../public/images/insta.jpg';
 import HalfCircleButton from '../../miscs/halfCircleButton';
 import ThumbUp from '../../../../public/icons/thumb.svg';
 import useIsMobile from '../../../helpers/useIsMobile';
@@ -37,7 +36,7 @@ const SMBlock: React.FC<ISMBlock> = ({ heading, text }) => {
 				/>
 				<div className={styles.image}>
 					<Image
-						src={image}
+						src="/images/insta.jpg"
 						alt={`instagram`}
 						fill={true}
 						sizes="(max-width: 768px) 80vw, (max-width: 1200px) 60vw, (max-width: 1600px) 50vw, 40vw"

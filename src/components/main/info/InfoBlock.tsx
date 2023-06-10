@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import headerImage from '../../../../public/images/header_image.png';
 import HalfCircleButton from '../../miscs/halfCircleButton';
 import useIsMobile from '../../../helpers/useIsMobile';
 import styles from './InfoBlock.module.scss';
@@ -27,7 +26,13 @@ const InfoBlock: React.FC<IInfoBlock> = ({ heading, text, buttonText }) => {
 				<h3>{heading}</h3>
 				<p>{text}</p>
 				<div className={styles.headerImage}>
-					<Image src={headerImage} alt={'header-image'} fill={true} />
+					<Image
+						src="/images/header_image.png"
+						alt={'header-image'}
+						fill={true}
+						priority={true}
+						sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, (max-width: 1600px) 50vw"
+					/>
 				</div>
 			</div>
 		</section>
