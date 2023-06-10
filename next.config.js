@@ -1,5 +1,6 @@
 module.exports = {
 	images: {
+		minimumCacheTTL: 31536000,
 		formats: ['image/webp', 'image/avif'],
 		remotePatterns: [
 			{

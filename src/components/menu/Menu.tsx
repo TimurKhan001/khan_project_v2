@@ -71,6 +71,12 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 
 		toggleOpen();
 
+		if (isOpen) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'unset';
+		}
+
 		burger.classList.toggle('is-active');
 	};
 
