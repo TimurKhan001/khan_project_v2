@@ -9,6 +9,7 @@ import LanguageContext from '../../src/contexts/languageContext';
 import NoScrollLink from '../../src/components/miscs/noScrollLink/noScrollLink';
 import ScrollProgress from '../../src/components/scrollProgress/scrollProgress';
 import Footer from '../../src/components/main/footer/footer';
+import Head from 'next/head';
 import styles from './id.module.scss';
 
 export async function getStaticPaths() {
@@ -75,6 +76,9 @@ const ProjectDetails = ({ projectData }) => {
 
 	return (
 		<AnimationLayout>
+			<Head>
+				<link rel="preload" href={mainPicture} as="image" />
+			</Head>
 			<ScrollProgress />
 			<div className={styles.wrapper}>
 				<div className={styles.absoluteMenu}>
