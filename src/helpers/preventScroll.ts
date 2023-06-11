@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect } from 'react';
 
 export const useLockBodyScroll = (dependency) => {
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const originalStyle = window.getComputedStyle(document.body).overflow;
 		const preventTouchMove = (e) => e.preventDefault();
 
