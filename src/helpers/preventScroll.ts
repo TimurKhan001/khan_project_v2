@@ -3,13 +3,15 @@ import { useEffect, useLayoutEffect } from 'react';
 export const useLockBodyScroll = (dependency) => {
 	useLayoutEffect(() => {
 		const originalStyle = window.getComputedStyle(document.body).overflow;
+		const preventTouchMove = (e) => e.preventDefault();
 
 		const scrollToggle = () => {
 			if (dependency) {
+				// Prevent scrolling on mount
 				document.body.style.overflow = 'hidden';
-				document.body.ontouchstart = (e) => {
-					e.preventDefault();
-				};
+				window.addEventListener('touchmove', preventTouchMove, {
+					passive: false,
+				});
 			} else {
 				document.body.style.overflow = originalStyle;
 			}
@@ -20,9 +22,7 @@ export const useLockBodyScroll = (dependency) => {
 		// Re-enable scrolling when component unmounts
 		return () => {
 			document.body.style.overflow = originalStyle;
-			document.body.ontouchstart = (e) => {
-				e.preventDefault();
-			};
+			window.removeEventListener('touchmove', preventTouchMove);
 		};
 	}, [dependency]);
 };
