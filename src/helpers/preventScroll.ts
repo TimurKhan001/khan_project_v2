@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 
 export const useLockBodyScroll = (dependency) => {
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const originalStyle = window.getComputedStyle(document.body).overflow;
 
 		const scrollToggle = () => {
