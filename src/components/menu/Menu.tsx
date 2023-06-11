@@ -77,6 +77,9 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 
 		if (isOpen) {
 			document.body.style.overflow = 'hidden';
+			document.body.ontouchstart = (e) => {
+				e.preventDefault();
+			};
 			menuRef.current.ontouchstart = (e) => {
 				e.preventDefault();
 			};
