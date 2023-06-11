@@ -11,7 +11,7 @@ import LanguageContext from '../../src/contexts/languageContext';
 import styles from './index.module.scss';
 import NoScrollLink from '../../src/components/miscs/noScrollLink/noScrollLink';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 	const res = await fetch(`${process.env.BACKEND_API_ENDPOINT}/projects`);
 	const projects = await res.json();
 
