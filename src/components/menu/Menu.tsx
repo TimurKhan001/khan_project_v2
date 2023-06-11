@@ -6,6 +6,7 @@ import NoScrollLink from '../miscs/noScrollLink/noScrollLink';
 import clsx from 'clsx';
 import styles from './Menu.module.scss';
 import useFormatMessage from '../../helpers/useFormatMessage';
+import { useLockBodyScroll } from '../../helpers/preventScroll';
 
 interface IMenu {
 	type?: 'dark' | 'light';
@@ -18,6 +19,8 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 	const isMobile = useIsMobile(600);
 	const [isOpen, toggleOpen] = useCycle(false, true);
 	const burgerRef = useRef(null);
+
+	useLockBodyScroll(isOpen);
 
 	const [isLanguageChanged, setIsLanguageChange] = useState<boolean>(false);
 
@@ -71,11 +74,11 @@ const Menu: React.FC<IMenu> = ({ type = 'dark', sectionName }) => {
 
 		toggleOpen();
 
-		if (isOpen) {
-			document.body.style.overflow = 'hidden';
-		} else {
-			document.body.style.overflow = 'unset';
-		}
+		// if (isOpen) {
+		// 	document.body.style.overflow = 'hidden';
+		// } else {
+		// 	document.body.style.overflow = 'unset';
+		// }
 
 		burger.classList.toggle('is-active');
 	};
