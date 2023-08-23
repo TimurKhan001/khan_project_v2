@@ -1,12 +1,19 @@
-const DYNAMIC_CACHE = "dynamic-v1";
-const STATIC_CACHE = "static-v4";
+const STATIC_CACHE = "static-v1";
 const STATIC_FILES = [
-    '/images/portfolio1.webp',
+	'/images/portfolio1.webp',
 	'/images/portfolio2.webp',
 	'/images/portfolio3.webp',
+	'/images/a1.webp',
+	'/images/b1.webp',
+	'/images/k1.webp',
+	'/images/l1.webp',
+	'/images/m1.webp',
+	'/images/n1.webp',
+	'/images/o1.webp',
+	'/images/p1.webp',
+	'/images/s1.webp',
+	'/images/sl1.webp',
 ];
-
-let setDynamicVersionInLocalStorage = true;
 
 self.addEventListener("install", (event) => {
 	console.log("%c[sw.js] Service Worker installed", "color: #FEC233");
@@ -21,47 +28,12 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-	event.waitUntil(
-		// will return an array of cache names
-		caches.keys().then((keys) => {
-			return Promise.all(
-				// go over all available keys
-				keys.map((key) => {
-					if (key !== STATIC_CACHE && key !== DYNAMIC_CACHE) {
-						console.log(
-							`%c[sw.js] Deleting old cache ${key}`,
-							"color: #FEC233"
-						);
-						return caches.delete(key);
-					}
-				})
-			);
-		})
-	);
 	console.log("%c[sw.js] Service Worker activated", "color: #FEC233");
 	// ensure that the Service Worker is activated correctly (fail-safe)
 	return self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
-	console.log(
-		"setDynamicVersionInLocalStorage",
-		setDynamicVersionInLocalStorage
-	);
-	if (setDynamicVersionInLocalStorage) {
-		event.waitUntil(
-			(async () => {
-				// get the client
-				const client = await clients.get(event.clientId);
-				// send a message to the client
-				client.postMessage({
-					action: "setDynamicVersionInLocalStorage",
-					dynamic: DYNAMIC_CACHE,
-				});
-				setDynamicVersionInLocalStorage = false;
-			})()
-		);
-	}
 	event.respondWith(
 		// look at all caches for a match on the key (= request)
 		caches.match(event.request).then((response) => {
@@ -69,21 +41,8 @@ self.addEventListener("fetch", (event) => {
 				// return from cache
 				return response;
 			} else {
-				// fetch it from the server and save to cache
-				return fetch(event.request)
-					.then((res) => {
-						return caches.open(DYNAMIC_CACHE).then((cache) => {
-							cache.put(event.request.url, res.clone());
-							return res;
-						});
-					})
-					.catch(() => {
-						return caches.open(STATIC_CACHE).then((cache) => {
-							if (event.request.headers.get("accept").includes("text/html")) {
-								return cache.match("/offline.html");
-							}
-						});
-					});
+				// fetch from the server
+				return fetch(event.request);
 			}
 		})
 	);

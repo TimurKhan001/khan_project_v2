@@ -76,22 +76,23 @@ const ProjectDetails = ({ projectData }) => {
 
 	return (
 		<AnimationLayout>
-			<Head>
-				<link rel="preload" href={mainPicture} as="image" />
-			</Head>
 			<ScrollProgress />
 			<div className={styles.wrapper}>
 				<div className={styles.absoluteMenu}>
 					<Menu type="light" />
 				</div>
 				<section className={styles.hero}>
-					<Image
-						src={mainPicture}
+					<img
+						src={`/images/${mainPicture}`}
+						alt={`${name[locale]}-project`}
+					/>
+					{/* <Image
+						src={`/images/${mainPicture}`}
 						alt={`${name[locale]}-project`}
 						fill={true}
 						sizes="100vw"
 						priority={true}
-					/>
+					/> */}
 					<h1>{name[locale]}</h1>
 				</section>
 				<PageLayout>
